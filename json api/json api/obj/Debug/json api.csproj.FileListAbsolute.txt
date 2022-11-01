@@ -1,0 +1,15 @@
+C:\Users\manas\Desktop\c# projelerim\json api\json api\bin\Debug\json api.exe.config
+C:\Users\manas\Desktop\c# projelerim\json api\json api\bin\Debug\json api.exe
+C:\Users\manas\Desktop\c# projelerim\json api\json api\bin\Debug\json api.pdb
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json api.csproj.AssemblyReference.cache
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json api.csproj.SuggestedBindingRedirects.cache
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json_api.Form1.resources
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json_api.Properties.Resources.resources
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json api.csproj.GenerateResource.cache
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json api.csproj.CoreCompileInputs.cache
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json api.exe
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json api.pdb
+C:\Users\manas\Desktop\c# projelerim\json api\json api\bin\Debug\Newtonsoft.Json.dll
+C:\Users\manas\Desktop\c# projelerim\json api\json api\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\manas\Desktop\c# projelerim\json api\json api\bin\Debug\Newtonsoft.Json.xml
+C:\Users\manas\Desktop\c# projelerim\json api\json api\obj\Debug\json api.csproj.CopyComplete
