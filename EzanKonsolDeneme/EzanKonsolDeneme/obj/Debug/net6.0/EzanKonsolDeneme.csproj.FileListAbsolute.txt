@@ -1,0 +1,15 @@
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\bin\Debug\net6.0\EzanKonsolDeneme.exe
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\bin\Debug\net6.0\EzanKonsolDeneme.deps.json
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\bin\Debug\net6.0\EzanKonsolDeneme.runtimeconfig.json
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\bin\Debug\net6.0\EzanKonsolDeneme.dll
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\bin\Debug\net6.0\EzanKonsolDeneme.pdb
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.csproj.AssemblyReference.cache
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.AssemblyInfoInputs.cache
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.AssemblyInfo.cs
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.csproj.CoreCompileInputs.cache
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.dll
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\refint\EzanKonsolDeneme.dll
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.pdb
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\EzanKonsolDeneme.genruntimeconfig.cache
+C:\Users\manas\source\repos\EzanKonsolDeneme\EzanKonsolDeneme\obj\Debug\net6.0\ref\EzanKonsolDeneme.dll
