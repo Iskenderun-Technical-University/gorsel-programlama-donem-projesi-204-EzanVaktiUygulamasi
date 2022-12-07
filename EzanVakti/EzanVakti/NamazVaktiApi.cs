@@ -48,8 +48,7 @@ public class NamazVaktiApi
     private int ay=0;
     private int year = 2022;
     private string DosyaYolu;
-    private bool mevcutDosya;
-    public string a="kuh";
+    private bool mevcutDosya=false;
 
     public string City
     {
@@ -65,6 +64,11 @@ public class NamazVaktiApi
     {
         get { return year; }
         set { year = value; }
+    }
+    public bool MevcutDosya
+    {
+        get { return mevcutDosya; }
+        set { mevcutDosya = value; }
     }
     public static string Place(string Sehir)
     {
@@ -106,7 +110,7 @@ public class NamazVaktiApi
         StreamWriter setsw = new StreamWriter(setting);
             var FilePath = DirectoryPath + FileName(city, year);
            // this.DosyaYolu = FilePath;
-            setsw.Write(FilePath);
+            setsw.WriteLine(FilePath);
             setsw.Close();
             FileStream fs=new FileStream(FilePath, FileMode.Create);
         //BinaryWriter bw=new BinaryWriter(fs);
@@ -114,17 +118,17 @@ public class NamazVaktiApi
           foreach(var ezan in res.Data.data)
           {   
               
-              bw.Write(ezan.Timings.Fajr.Remove(5, 6));
-              bw.Write(ezan.Timings.Sunrise.Remove(5, 6));
-              bw.Write(ezan.Timings.Dhuhr.Remove(5,6));
-              bw.Write(ezan.Timings.Asr.Remove(5, 6));
-              bw.Write(ezan.Timings.Sunset.Remove(5, 6));
-              bw.Write(ezan.Timings.Isha.Remove(5, 6));
-              bw.Write(ezan.Date.Readable);
-              bw.Write(ezan.Date.Gregorian.Date);
-            //  bw.Write(Int32.Parse(ezan.Date.Gregorian.Day));
-            bw.Write(ezan.Date.Gregorian.Day);
-              bw.Write(ezan.Date.Gregorian.Weekday.En);
+              bw.WriteLine(ezan.Timings.Fajr.Remove(5, 6));
+              bw.WriteLine(ezan.Timings.Sunrise.Remove(5, 6));
+              bw.WriteLine(ezan.Timings.Dhuhr.Remove(5,6));
+              bw.WriteLine(ezan.Timings.Asr.Remove(5, 6));
+              bw.WriteLine(ezan.Timings.Sunset.Remove(5, 6));
+              bw.WriteLine(ezan.Timings.Isha.Remove(5, 6));
+              bw.WriteLine(ezan.Date.Readable);
+              bw.WriteLine(ezan.Date.Gregorian.Date);
+              bw.WriteLine(Int32.Parse(ezan.Date.Gregorian.Day));
+           // bw.Write(ezan.Date.Gregorian.Day);
+              bw.WriteLine(ezan.Date.Gregorian.Weekday.En);
             if(ezan.Date.Gregorian.Weekday.En=="Monday")
             {
                 gunKisa = GunlerKisa[0];
@@ -160,31 +164,52 @@ public class NamazVaktiApi
                 gunKisa = GunlerKisa[6];
                 gunUzun = GunlerUzun[6];
             }
-            bw.Write(gunKisa);
-            bw.Write(gunUzun);
-            bw.Write(ezan.Date.Gregorian.Month.Number.ToString);
-              bw.Write(ezan.Date.Gregorian.Month.En);
-              bw.Write(Aylar[(ezan.Date.Gregorian.Month.Number) - 1]);
-              bw.Write(ezan.Date.Gregorian.Year);
-              bw.Write(ezan.Date.Hijri.Date);
-            //  bw.Write(Int32.Parse(ezan.Date.Hijri.Day));
-              bw.Write(ezan.Date.Hijri.Day);
-              bw.Write(ezan.Date.Hijri.Weekday.En);
-              bw.Write(ezan.Date.Hijri.Month.Number);
-              bw.Write(ezan.Date.Hijri.Month.En);
-              bw.Write(ezan.Date.Hijri.Year);
+            bw.WriteLine(gunKisa);
+            bw.WriteLine(gunUzun);
+            bw.WriteLine(ezan.Date.Gregorian.Month.Number);
+              bw.WriteLine(ezan.Date.Gregorian.Month.En);
+              bw.WriteLine(Aylar[(ezan.Date.Gregorian.Month.Number) - 1]);
+              bw.WriteLine(ezan.Date.Gregorian.Year);
+              bw.WriteLine(ezan.Date.Hijri.Date);
+              bw.WriteLine(Int32.Parse(ezan.Date.Hijri.Day));
+             // bw.Write(ezan.Date.Hijri.Day);
+              bw.WriteLine(ezan.Date.Hijri.Weekday.En);
+              bw.WriteLine(ezan.Date.Hijri.Month.Number);
+              bw.WriteLine(ezan.Date.Hijri.Month.En);
+              bw.WriteLine(ezan.Date.Hijri.Year);
 
           }
         bw.Close();
     }
-    public void EzanFileOutput(List<EzanListe> listitem,EzanListe ezanliste)
+    public void EzanFileCheck()
+    {   
+        if(!File.Exists(@"C:\Program Files\EzanVakti\ayar.txt"))
+        {
+            this.mevcutDosya = true;
+        }
+
+        else{
+            FileStream ayar = new FileStream(@"C:\Program Files\EzanVakti\ayar.txt", FileMode.Open);
+            StreamReader sett = new StreamReader(ayar);
+            this.DosyaYolu = sett.ReadLine();
+            sett.Close();
+            // string filp= @"C:\Program Files\EzanVakti\hatay\2022";
+            if (!File.Exists(this.DosyaYolu))
+            {
+                this.mevcutDosya = true;
+            }
+            else
+            {
+                this.mevcutDosya = false;
+            }
+        }
+    }
+    public void EzanFileOutput(List<EzanListe> listitem)
     {
-        Listte e = new Listte();
         List<EzanListe> abc = new List<EzanListe>();
-       // EzanListe ezanliste=new EzanListe();
         FileStream ayar = new FileStream(@"C:\Program Files\EzanVakti\ayar.txt", FileMode.Open);
-        BinaryReader sett = new BinaryReader(ayar);
-        this.DosyaYolu = sett.ReadString();
+      StreamReader sett=new StreamReader(ayar);
+        this.DosyaYolu = sett.ReadLine();
         sett.Close();
       // string filp= @"C:\Program Files\EzanVakti\hatay\2022";
         if (!File.Exists(this.DosyaYolu))
@@ -196,37 +221,62 @@ public class NamazVaktiApi
 
 
             FileStream fs = new FileStream(this.DosyaYolu, FileMode.Open);
-            BinaryReader br = new BinaryReader(fs);
-
+          //  BinaryReader br = new BinaryReader(fs);
+          StreamReader br=new StreamReader(fs);
                 
-            while(br.BaseStream.Position<br.BaseStream.Length)
-                { 
-                    ezanliste.imsak=br.ReadString();
-                    ezanliste.gunes=br.ReadString();
-                    ezanliste.ogle=br.ReadString();
-                    ezanliste.ikindi=br.ReadString();
-                    ezanliste.aksam=br.ReadString();
-                    ezanliste.yatsi=br.ReadString();
-                    ezanliste.readable=br.ReadString();
-                    ezanliste.GregDate=br.ReadString();
-                    ezanliste.GregDay = br.ReadInt32();
-                    ezanliste.GregWeekdayEn = br.ReadString();
-                    ezanliste.GregHaftaninGunuKisa = br.ReadString();
-                    ezanliste.GregHaftaninGunuUzun=br.ReadString();
-                    ezanliste.GregMonthNumber=br.ReadInt32();
-                    ezanliste.GregMonthEn=br.ReadString();
-                    ezanliste.GregAylar=br.ReadString();
-                    ezanliste.GregYear=br.ReadString();
-                    ezanliste.HijriDate=br.ReadString();
-                    ezanliste.HijriDay = br.ReadInt32();
-                    ezanliste.HijriWeekdayEn=br.ReadString();
-                    ezanliste.HijriMonthNumber=br.ReadInt32();
-                    ezanliste.HijriMonthEn=br.ReadString();
-                    ezanliste.HijriYear=br.ReadString();
+            while(!br.EndOfStream)
+                {
+                listitem.Add(new EzanListe()
+                {
+                    imsak = br.ReadLine(),
+                    gunes = br.ReadLine(),
+                    ogle = br.ReadLine(),
+                    ikindi = br.ReadLine(),
+                    aksam = br.ReadLine(),
+                    yatsi = br.ReadLine(),
+                    readable = br.ReadLine(),
+                    GregDate = br.ReadLine(),
+                    GregDay = int.Parse(br.ReadLine()),
+                    GregWeekdayEn = br.ReadLine(),
+                    GregHaftaninGunuKisa = br.ReadLine(),
+                    GregHaftaninGunuUzun = br.ReadLine(),
+                    GregMonthNumber = int.Parse(br.ReadLine()),
+                    GregMonthEn = br.ReadLine(),
+                    GregAylar = br.ReadLine(),
+                    GregYear = br.ReadLine(),
+                    HijriDate = br.ReadLine(),
+                    HijriDay = int.Parse(br.ReadLine()),
+                    HijriWeekdayEn = br.ReadLine(),
+                    HijriMonthNumber = int.Parse(br.ReadLine()),
+                    HijriMonthEn = br.ReadLine(),
+                    HijriYear = br.ReadLine(),
+                });
+                  /*  ezanliste.imsak=br.ReadLine();
+                    ezanliste.gunes=br.ReadLine();
+                    ezanliste.ogle=br.ReadLine();
+                    ezanliste.ikindi=br.ReadLine();
+                    ezanliste.aksam=br.ReadLine();
+                    ezanliste.yatsi=br.ReadLine();
+                    ezanliste.readable=br.ReadLine();
+                    ezanliste.GregDate=br.ReadLine();
+                    ezanliste.GregDay =int.Parse(br.ReadLine());
+                    ezanliste.GregWeekdayEn = br.ReadLine();
+                    ezanliste.GregHaftaninGunuKisa = br.ReadLine();
+                    ezanliste.GregHaftaninGunuUzun=br.ReadLine();
+                    ezanliste.GregMonthNumber=int.Parse(br.ReadLine());
+                    ezanliste.GregMonthEn=br.ReadLine();
+                    ezanliste.GregAylar=br.ReadLine();
+                    ezanliste.GregYear=br.ReadLine();
+                    ezanliste.HijriDate=br.ReadLine();
+                    ezanliste.HijriDay =int.Parse(br.ReadLine());
+                    ezanliste.HijriWeekdayEn=br.ReadLine();
+                    ezanliste.HijriMonthNumber=int.Parse(br.ReadLine());
+                    ezanliste.HijriMonthEn=br.ReadLine();
+                    ezanliste.HijriYear=br.ReadLine();*/
 
                 //e.DAta.liste.Add(ezanliste);
                 //  abc.Add(ezanliste);
-                listitem.Add(ezanliste);
+               // listitem.Add(ezanliste);
                 }
                 br.Close();
             

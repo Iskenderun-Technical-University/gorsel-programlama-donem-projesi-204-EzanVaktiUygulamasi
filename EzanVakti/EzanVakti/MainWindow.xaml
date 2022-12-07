@@ -17,6 +17,7 @@
         <Button x:Name="SehirSecim" Content="Seciniz" HorizontalAlignment="Left" Margin="117,205,0,0" VerticalAlignment="Top" Click="SehirSecim_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="17,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.784,-1.082" TextChanged="TextBox_TextChanged"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="64,296,0,0" VerticalAlignment="Top" Width="188"/>
+        <Button x:Name="DosyaOut" Content="OutPut" HorizontalAlignment="Left" Margin="214,225,0,0" VerticalAlignment="Top" Click="DosyaOut_Click"/>
 
 
 

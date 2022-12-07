@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\manas\\source\\repos\\EzanVakti\\EzanVakti\\EzanVakti.csproj": {}
+    "C:\\Users\\manas\\source\\repos\\gorsel-programlama-donem-projesi-204-EzanVaktiUygulamasi\\EzanVakti\\EzanVakti\\EzanVakti.csproj": {}
   },
   "projects": {
-    "C:\\Users\\manas\\source\\repos\\EzanVakti\\EzanVakti\\EzanVakti.csproj": {
+    "C:\\Users\\manas\\source\\repos\\gorsel-programlama-donem-projesi-204-EzanVaktiUygulamasi\\EzanVakti\\EzanVakti\\EzanVakti.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manas\\source\\repos\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
+        "projectUniqueName": "C:\\Users\\manas\\source\\repos\\gorsel-programlama-donem-projesi-204-EzanVaktiUygulamasi\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
         "projectName": "EzanVakti",
-        "projectPath": "C:\\Users\\manas\\source\\repos\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
+        "projectPath": "C:\\Users\\manas\\source\\repos\\gorsel-programlama-donem-projesi-204-EzanVaktiUygulamasi\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
         "packagesPath": "C:\\Users\\manas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manas\\source\\repos\\EzanVakti\\EzanVakti\\obj\\",
+        "outputPath": "C:\\Users\\manas\\source\\repos\\gorsel-programlama-donem-projesi-204-EzanVaktiUygulamasi\\EzanVakti\\EzanVakti\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

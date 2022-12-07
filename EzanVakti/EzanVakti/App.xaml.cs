@@ -13,5 +13,21 @@ namespace EzanVakti
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+           NamazVaktiApi namaz=new NamazVaktiApi();
+            namaz.EzanFileCheck();
+            if(namaz.MevcutDosya==false)
+            {
+                Window1 window1 = new Window1();
+                window1.Show();
+            }
+            else if(namaz.MevcutDosya==true)
+            {
+                MainWindow window = new MainWindow();
+                window.Show();
+            }
+
+        }
     }
 }

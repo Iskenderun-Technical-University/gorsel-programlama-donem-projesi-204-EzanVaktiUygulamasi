@@ -28,6 +28,16 @@ namespace EzanVakti
         public MainWindow()
         {
             InitializeComponent();
+            /*MainWindow window = new MainWindow();
+            Window1 window1 = new Window1();
+            NamazVaktiApi a = new NamazVaktiApi();
+            List<EzanListe> lst = new List<EzanListe>();
+            a.EzanFileOutput(lst);
+            if(a.MevcutDosya==false)
+            {
+                window.Close();
+                window1.Show();
+            }*/
         }
         /* public static string Place(string city)
          {
@@ -88,8 +98,8 @@ namespace EzanVakti
         {
             //EzanT();
           //  Listte<EzanListe> acc = new Listte<EzanListe>();
-          Listte aa=new Listte();
-            EzanListe ezan = new EzanListe();
+          //Listte aa=new Listte();
+            //EzanListe ezanl = new EzanListe();
             List<EzanListe> lst = new List<EzanListe>();
             NamazVaktiApi ezanvakti = new NamazVaktiApi();
           //  List<EzanListe> ezanListe = new List<EzanListe>();
@@ -105,24 +115,36 @@ namespace EzanVakti
                 {
                     WriteIndented = true
                 };
+                ezanvakti.EzanFileInput();
                 /*foreach (var ezan in a.Data.data)
                 {
                     MessageBox.Show($"{ezan.Date.Gregorian.Date}      {ezan.Timings.Fajr.Remove(5, 6)}       {ezan.Timings.Sunrise.Remove(5, 6)}       {ezan.Timings.Dhuhr.Remove(5, 6)}       {ezan.Timings.Asr.Remove(5, 6)}       {ezan.Timings.Sunset.Remove(5, 6)}       {ezan.Timings.Isha.Remove(5, 6)}");
                 }*/
-                 ezanvakti.EzanFileInput();
+                MessageBox.Show("Dosya olusturuldu"); 
                 
-                ezanvakti.EzanFileOutput(lst, ezan);
+               /*ezanvakti.EzanFileOutput(lst);
                 foreach(var item in lst)
                 {
                     MessageBox.Show(item.GregMonthEn+" "+item.GregDay+" "+item.imsak);
-                }
+                }*/
 
             }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+           
+        }
 
+        private void DosyaOut_Click(object sender, RoutedEventArgs e)
+        {
+            NamazVaktiApi ezanvakti = new NamazVaktiApi();
+            List<EzanListe> lst = new List<EzanListe>();
+            ezanvakti.EzanFileOutput(lst);
+            foreach (var item in lst)
+            {
+                MessageBox.Show(item.GregMonthEn + " " + item.GregDay + " " + item.imsak);
+            }
         }
     }
 }
