@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Picasso;
 using Picasso.Model;
+using System.Threading;
 
 namespace EzanVakti
 {
@@ -96,39 +97,38 @@ namespace EzanVakti
         }
         private async void SehirSecim_Click(object sender, RoutedEventArgs e)
         {
-            //EzanT();
-          //  Listte<EzanListe> acc = new Listte<EzanListe>();
-          //Listte aa=new Listte();
-            //EzanListe ezanl = new EzanListe();
+            DateTime dt1 = DateTime.Now;
             List<EzanListe> lst = new List<EzanListe>();
             NamazVaktiApi ezanvakti = new NamazVaktiApi();
-          //  List<EzanListe> ezanListe = new List<EzanListe>();
+            
             ComboBoxItem deger = (ComboBoxItem)sehir.SelectedItem;
             ezanvakti.City = deger.Content.ToString();
+            ezanvakti.Year = dt1.Year;
             //var a = ezanvakti.EzanApi();
             
             var a = await ezanvakti.EzanApi();
-           // MessageBox.Show(ezanvakti.City);
-            if (a.IsSuccess)
-            {
-                var settings = new JsonSerializerOptions()
-                {
-                    WriteIndented = true
-                };
+            //essageBox.Show(ezanvakti.City);
+         
                 ezanvakti.EzanFileInput();
-                /*foreach (var ezan in a.Data.data)
-                {
-                    MessageBox.Show($"{ezan.Date.Gregorian.Date}      {ezan.Timings.Fajr.Remove(5, 6)}       {ezan.Timings.Sunrise.Remove(5, 6)}       {ezan.Timings.Dhuhr.Remove(5, 6)}       {ezan.Timings.Asr.Remove(5, 6)}       {ezan.Timings.Sunset.Remove(5, 6)}       {ezan.Timings.Isha.Remove(5, 6)}");
-                }*/
-                MessageBox.Show("Dosya olusturuldu"); 
-                
-               /*ezanvakti.EzanFileOutput(lst);
-                foreach(var item in lst)
-                {
-                    MessageBox.Show(item.GregMonthEn+" "+item.GregDay+" "+item.imsak);
-                }*/
+            /*foreach (var ezan in a.Data.data)
+            {
+                MessageBox.Show($"{ezan.Date.Gregorian.Date}      {ezan.Timings.Fajr.Remove(5, 6)}       {ezan.Timings.Sunrise.Remove(5, 6)}       {ezan.Timings.Dhuhr.Remove(5, 6)}       {ezan.Timings.Asr.Remove(5, 6)}       {ezan.Timings.Sunset.Remove(5, 6)}       {ezan.Timings.Isha.Remove(5, 6)}");
+            }*/
+            textbox1.Text = "Dosya olusturuldu";
+            // MessageBox.Show("Dosya olusturuldu");
 
-            }
+            /*ezanvakti.EzanFileOutput(lst);
+             foreach(var item in lst)
+             {
+                 MessageBox.Show(item.GregMonthEn+" "+item.GregDay+" "+item.imsak);
+             }*/
+
+            //window1.Show();
+            //this.Close();*/
+          
+                Window1 window1=new Window1();
+                window1.Show();
+            this.Close();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -145,6 +145,12 @@ namespace EzanVakti
             {
                 MessageBox.Show(item.GregMonthEn + " " + item.GregDay + " " + item.imsak);
             }
+        }
+
+        private void nextPage_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            
         }
     }
 }

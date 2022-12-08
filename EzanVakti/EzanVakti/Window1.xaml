@@ -7,7 +7,23 @@
         mc:Ignorable="d"
         Title="Window1" Height="500" Width="400">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="139,242,0,0" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="39,394,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Label x:Name="HijriLabel" Content="HijriLabel" HorizontalAlignment="Left" Margin="39,102,0,0" VerticalAlignment="Top"/>
+        <TextBlock Name="tbTime" HorizontalAlignment="Left" Margin="151,404,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Label x:Name="GregLabel" Content="GregLabel" HorizontalAlignment="Left" Margin="141,102,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="YerelSaatLabel" Content="YerelSaatLAbel" HorizontalAlignment="Left" Margin="299,102,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="imsak" Content="imsak" HorizontalAlignment="Left" Margin="31,160,0,0" Background="Aqua" VerticalAlignment="Top" Height="57" Width="48"/>
+        <Label x:Name="gunes" Content="Güneş" HorizontalAlignment="Left" Margin="93,163,0,0" Background="Aqua" VerticalAlignment="Top" Height="54"/>
+        <Label x:Name="ogle" Content="Öğle" HorizontalAlignment="Left" Margin="151,163,0,0" Background="Aqua" VerticalAlignment="Top" Height="51"/>
+        <Label x:Name="ikindi" Content="İkindi" HorizontalAlignment="Left" Margin="200,162,0,0" Background="Aqua" VerticalAlignment="Top" Height="54"/>
+        <Label x:Name="aksam"  HorizontalAlignment="Left" Margin="258,162,0,0" Background="Aqua" VerticalAlignment="Top" Height="70" Width="50">
+            <StackPanel>
+                <Image Source="sunset-24.png" Height="20" Width="20" RenderTransformOrigin="0.591,1.127" Margin="8,13"/>
+                
+            </StackPanel>
+        </Label>
+        <Label x:Name="yatsi" Content="Yatsı" HorizontalAlignment="Left" Margin="321,162,0,0" Background="Aqua" VerticalAlignment="Top" Height="54" Width="43"/>
+
 
     </Grid>
 </Window>
