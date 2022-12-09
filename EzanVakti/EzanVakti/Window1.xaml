@@ -12,17 +12,22 @@
         <TextBlock Name="tbTime" HorizontalAlignment="Left" Margin="151,404,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <Label x:Name="GregLabel" Content="GregLabel" HorizontalAlignment="Left" Margin="141,102,0,0" VerticalAlignment="Top"/>
         <Label x:Name="YerelSaatLabel" Content="YerelSaatLAbel" HorizontalAlignment="Left" Margin="299,102,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="imsak" Content="imsak" HorizontalAlignment="Left" Margin="31,160,0,0" Background="Aqua" VerticalAlignment="Top" Height="57" Width="48"/>
-        <Label x:Name="gunes" Content="Güneş" HorizontalAlignment="Left" Margin="93,163,0,0" Background="Aqua" VerticalAlignment="Top" Height="54"/>
-        <Label x:Name="ogle" Content="Öğle" HorizontalAlignment="Left" Margin="151,163,0,0" Background="Aqua" VerticalAlignment="Top" Height="51"/>
-        <Label x:Name="ikindi" Content="İkindi" HorizontalAlignment="Left" Margin="200,162,0,0" Background="Aqua" VerticalAlignment="Top" Height="54"/>
-        <Label x:Name="aksam"  HorizontalAlignment="Left" Margin="258,162,0,0" Background="Aqua" VerticalAlignment="Top" Height="70" Width="50">
-            <StackPanel>
-                <Image Source="sunset-24.png" Height="20" Width="20" RenderTransformOrigin="0.591,1.127" Margin="8,13"/>
-                
-            </StackPanel>
-        </Label>
-        <Label x:Name="yatsi" Content="Yatsı" HorizontalAlignment="Left" Margin="321,162,0,0" Background="Aqua" VerticalAlignment="Top" Height="54" Width="43"/>
+        <GroupBox Margin="244,50,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
+           
+
+                <StackPanel Margin="0,0,0,0" Height="70" Width="50">
+                    <Label Content="Akşam" Height="23" Width="43" FontSize="10" />
+                <Image Height="24" Source="/sunset.png" Width="20" RenderTransformOrigin="-0.507,0.523"/>
+                <Label x:Name="AksamVakti" Content="Aksamvakti" Width="50" Height="27"  RenderTransformOrigin="0.49,1.346" />
+                </StackPanel>
+
+            
+
+
+        </GroupBox>
+        <GroupBox Margin="113,242,195,120" BorderThickness="3" BorderBrush="#FF090A06">
+            <Image Margin="22,0,10,0" Source="/sunset2.png" Stretch="Fill" Height="48"/>
+        </GroupBox>
 
 
     </Grid>

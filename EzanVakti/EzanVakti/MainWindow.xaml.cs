@@ -29,6 +29,7 @@ namespace EzanVakti
         public MainWindow()
         {
             InitializeComponent();
+            nextPage.Visibility = Visibility.Hidden;
             /*MainWindow window = new MainWindow();
             Window1 window1 = new Window1();
             NamazVaktiApi a = new NamazVaktiApi();
@@ -73,14 +74,14 @@ namespace EzanVakti
              return result;
 
          }*/
-        public async void EzanT()
+  /*      public async void EzanT()
         {
             NamazVaktiApi ezanvakti = new NamazVaktiApi();
             ComboBoxItem deger = (ComboBoxItem)sehir.SelectedItem;
             ezanvakti.City = deger.Content.ToString();
             //var a = ezanvakti.EzanApi();
             MessageBox.Show("lkjlh");
-         var a=await ezanvakti.EzanApi();
+     //    var a=await ezanvakti.EzanApi();
             MessageBox.Show(ezanvakti.City);
             if (a.IsSuccess)
             {
@@ -94,8 +95,8 @@ namespace EzanVakti
                 }
 
             }
-        }
-        private async void SehirSecim_Click(object sender, RoutedEventArgs e)
+        }*/
+        private void SehirSecim_Click(object sender, RoutedEventArgs e)
         {
             DateTime dt1 = DateTime.Now;
             List<EzanListe> lst = new List<EzanListe>();
@@ -104,12 +105,13 @@ namespace EzanVakti
             ComboBoxItem deger = (ComboBoxItem)sehir.SelectedItem;
             ezanvakti.City = deger.Content.ToString();
             ezanvakti.Year = dt1.Year;
+            ezanvakti.Month = dt1.Month;
             //var a = ezanvakti.EzanApi();
             
-            var a = await ezanvakti.EzanApi();
+          //  var a = await ezanvakti.EzanApi();
             //essageBox.Show(ezanvakti.City);
          
-                ezanvakti.EzanFileInput();
+            ezanvakti.EzanFileInput();
             /*foreach (var ezan in a.Data.data)
             {
                 MessageBox.Show($"{ezan.Date.Gregorian.Date}      {ezan.Timings.Fajr.Remove(5, 6)}       {ezan.Timings.Sunrise.Remove(5, 6)}       {ezan.Timings.Dhuhr.Remove(5, 6)}       {ezan.Timings.Asr.Remove(5, 6)}       {ezan.Timings.Sunset.Remove(5, 6)}       {ezan.Timings.Isha.Remove(5, 6)}");
@@ -126,9 +128,7 @@ namespace EzanVakti
             //window1.Show();
             //this.Close();*/
           
-                Window1 window1=new Window1();
-                window1.Show();
-            this.Close();
+            nextPage.Visibility=Visibility.Visible;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -149,8 +149,18 @@ namespace EzanVakti
 
         private void nextPage_Click(object sender, RoutedEventArgs e)
         {
-            Window1 window1 = new Window1();
-            
+            NamazVaktiApi namaz = new NamazVaktiApi();
+            namaz.EzanFileCheck();
+            if (!namaz.MevcutDosya)
+            {
+                Window1 window1 = new Window1();
+                window1.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Bir sorun oluştu\nTekrar Deneyiniz..");
+            }
         }
     }
 }

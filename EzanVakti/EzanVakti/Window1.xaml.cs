@@ -45,6 +45,7 @@ namespace EzanVakti
             }
             GregLabel.Content = ezan.GregDay + " " + ezan.GregAylar + " " + ezan.GregYear;
             YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
+            AksamVakti.Content = ezan.aksam;
            
         }
         
