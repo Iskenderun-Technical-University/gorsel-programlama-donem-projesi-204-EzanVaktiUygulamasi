@@ -7,9 +7,14 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="gunes48.png" />
+    <None Remove="ikindi48.png" />
+    <None Remove="ogle48.png" />
+    <None Remove="sunrise.png" />
+    <None Remove="sunrise48.png" />
     <None Remove="sunset.png" />
-    <None Remove="sunset128px.png" />
-    <None Remove="sunset256px.png" />
+    <None Remove="sunset2.png" />
+    <None Remove="yatsi52.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -20,8 +25,13 @@
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="gunes48.png" />
+    <Resource Include="ikindi48.png" />
+    <Resource Include="ogle48.png" />
+    <Resource Include="sunrise.png" />
+    <Resource Include="sunrise48.png" />
     <Resource Include="sunset.png" />
-    <Resource Include="sunset128px.png" />
-    <Resource Include="sunset256px.png" />
+    <Resource Include="sunset2.png" />
+    <Resource Include="yatsi52.png" />
   </ItemGroup>
 </Project>

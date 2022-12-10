@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,16 @@ namespace EzanVakti
     /// </summary>
     public partial class Window1 : Window
     {    
-        DispatcherTimer _timer;
-        TimeSpan _time;
-        
+       public EzanListe ezan1=new EzanListe();
         public Window1()
         {
             InitializeComponent();
+            DispatcherTimer timer=new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Tick += vakit_check;
+            timer.Start();
+            
             DateTime bugun=DateTime.Now;
             DateTime dt = new DateTime();
             NamazVaktiApi namaz = new NamazVaktiApi();
@@ -38,20 +43,143 @@ namespace EzanVakti
                 if(item.GregDay==bugun.Day)
                 {   
                     ezan=item;
+                    ezan1 = item;
+                    gun1.Content = item.GregHaftaninGunuKisa;
+                    imsak1.Text = item.imsak;
+                    gunes1.Text = item.gunes;
+                    ogle1.Text = item.ogle;
+                    ikindi1.Text = item.ikindi;
+                    aksam1.Text = item.aksam;
+                    yatsi1.Text = item.yatsi;
                   //  MessageBox.Show(item.GregDay+" "+item.GregAylar+" "+item.GregYear);
+                   
+                }
+                else if(item.GregDay==bugun.Day+1)
+                {
+                    gun2.Content=item.GregHaftaninGunuKisa;
+                    imsak2.Text = item.imsak;
+                    gunes2.Text = item.gunes;
+                    ogle2.Text = item.ogle;
+                    ikindi2.Text = item.ikindi;
+                    aksam2.Text = item.aksam;
+                    yatsi2.Text = item.yatsi;
+                }
+                else if (item.GregDay == bugun.Day + 2)
+                {
+                    gun3.Content = item.GregHaftaninGunuKisa;
+                    imsak3.Text = item.imsak;
+                    gunes3.Text = item.gunes;
+                    ogle3.Text = item.ogle;
+                    ikindi3.Text = item.ikindi;
+                    aksam3.Text = item.aksam;
+                    yatsi3.Text = item.yatsi;
+                }
+                else if (item.GregDay == bugun.Day + 3)
+                {
+                    gun4.Content = item.GregHaftaninGunuKisa;
+                    imsak4.Text = item.imsak;
+                    gunes4.Text = item.gunes;
+                    ogle4.Text = item.ogle;
+                    ikindi4.Text = item.ikindi;
+                    aksam4.Text = item.aksam;
+                    yatsi4.Text = item.yatsi;
+                }
+                else if (item.GregDay == bugun.Day + 4)
+                {
+                    gun5.Content = item.GregHaftaninGunuKisa;
+                    imsak5.Text = item.imsak;
+                    gunes5.Text = item.gunes;
+                    ogle5.Text = item.ogle;
+                    ikindi5.Text = item.ikindi;
+                    aksam5.Text = item.aksam;
+                    yatsi5.Text = item.yatsi;
+                }
+                else if (item.GregDay == bugun.Day + 5)
+                {
+                    gun6.Content = item.GregHaftaninGunuKisa;
+                    imsak6.Text = item.imsak;
+                    gunes6.Text = item.gunes;
+                    ogle6.Text = item.ogle;
+                    ikindi6.Text = item.ikindi;
+                    aksam6.Text = item.aksam;
+                    yatsi6.Text = item.yatsi;
+                }
+                else if (item.GregDay == bugun.Day + 6)
+                {
+                    gun7.Content = item.GregHaftaninGunuKisa;
+                    imsak7.Text = item.imsak;
+                    gunes7.Text = item.gunes;
+                    ogle7.Text = item.ogle;
+                    ikindi7.Text = item.ikindi;
+                    aksam7.Text = item.aksam;
+                    yatsi7.Text = item.yatsi;
                     break;
                 }
 
             }
             GregLabel.Content = ezan.GregDay + " " + ezan.GregAylar + " " + ezan.GregYear;
-            YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
+           // YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
             AksamVakti.Content = ezan.aksam;
-           
+            imsakvakti.Content = ezan.imsak;
+            gunesvakti.Content = ezan.gunes;
+            ogleVakti.Content = ezan.ogle;
+            ikindiVakti.Content = ezan.ikindi;
+            yatsiVakti.Content = ezan.yatsi;
+         //   vakit.Content= ezan1.imsak.Remove(2)+" " + ezan1.imsak.Remove(0, 3);
         }
-        
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void timer_Tick(object sender, EventArgs e)
         {
+            YerelSaatLabel.Content=DateTime.Now.ToLongTimeString();
+        }
+        void vakit_check(object sender,EventArgs e)
+        {
+            DateTime simdi = DateTime.Now;
+            if(simdi.Hour<=Int32.Parse(ezan1.imsak.Remove(2))&&(simdi.Hour < Int32.Parse(ezan1.imsak.Remove(2)) || simdi.Minute<=Int32.Parse(ezan1.imsak.Remove(0,3))))
+                    {
+                vakit.Content = "İMSAK VAKTİNE KALAN";
+                TimeSpan d = DateTime.Parse(ezan1.imsak).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
+                kalanZaman.Content = d;
+            }
+               else if(simdi.Hour <= Int32.Parse(ezan1.gunes.Remove(2))&&(simdi.Hour < Int32.Parse(ezan1.gunes.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.gunes.Remove(0, 3))))
+               {
+                vakit.Content = "GÜNES VAKTİNE KALAN";
+                TimeSpan d = DateTime.Parse(ezan1.gunes).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
+                kalanZaman.Content = d;
+            }
+            else if (simdi.Hour <= Int32.Parse(ezan1.ogle.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.ogle.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.ogle.Remove(0, 3))))
+            {
+                vakit.Content = "ÖĞLE EZANINA KALAN";
+                TimeSpan d = DateTime.Parse(ezan1.ogle).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
+                kalanZaman.Content = d;
+            }
+            else if (simdi.Hour <= Int32.Parse(ezan1.ikindi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.ikindi.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.ikindi.Remove(0, 3))))
+            {
+                vakit.Content = "İKİNDİ EZANINA KALAN";
+                TimeSpan d = DateTime.Parse(ezan1.ikindi).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
+                kalanZaman.Content = d;
+            }
+            else if (simdi.Hour <= Int32.Parse(ezan1.aksam.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.aksam.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.aksam.Remove(0, 3))))
+            {
+                vakit.Content = "AKŞAM EZANINA KALAN";
+                TimeSpan d = DateTime.Parse(ezan1.aksam).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
+                kalanZaman.Content = d;
+
+            }
+            else if (simdi.Hour <= Int32.Parse(ezan1.yatsi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.yatsi.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.yatsi.Remove(0, 3))))
+            {
+                vakit.Content = "YATSI EZANINA KALAN";
+                TimeSpan d = DateTime.Parse(ezan1.yatsi).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
+                kalanZaman.Content = d;
+            }
+            else
+            {
+                vakit.Content = simdi.Hour+":"+simdi.Minute;
+                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+            }
+            
+            
             
         }
+        
     }
 }
