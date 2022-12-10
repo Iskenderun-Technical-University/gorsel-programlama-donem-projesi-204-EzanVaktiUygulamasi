@@ -7,10 +7,12 @@
         mc:Ignorable="d"
         Title="Window1" Height="550" Width="430">
     <Grid Width="430" Height="530">
+        <Image x:Name="arkaplanresmi" Stretch="UniformToFill"/>
+        <Image x:Name="gunesImg"  Stretch="UniformToFill"/>
         <Label x:Name="HijriLabel" Content="HijriLabel" HorizontalAlignment="Left" Margin="39,102,0,0" VerticalAlignment="Top"/>
         <Label x:Name="GregLabel" Content="GregLabel" HorizontalAlignment="Left" Margin="141,102,0,0" VerticalAlignment="Top"/>
         <Label x:Name="YerelSaatLabel" Content="YerelSaatLAbel" HorizontalAlignment="Left" Margin="299,102,0,0" VerticalAlignment="Top"/>
-        <GroupBox x:Name="groupboxAksam" Margin="185,50,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
+        <GroupBox x:Name="groupboxAksam" Margin="185,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
 
 
             <StackPanel Margin="0,0,0,0" Height="70" Width="50">
@@ -19,21 +21,21 @@
                 <Label x:Name="AksamVakti" Content="aa:aa" Width="50" Height="27"  RenderTransformOrigin="0.49,1.346" Margin="0,0,-9,0" />
             </StackPanel>
         </GroupBox>
-        <GroupBox Margin="-255,50,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
+        <GroupBox Margin="-255,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
             <StackPanel Margin="0,0,0,0" Height="70" Width="50" >
                 <Label Content="imsak" Margin="0,0,0,0" FontSize="10" Height="23" Width="43"/>
                 <Image Source="/sunrise48.png" Width="20" Height="24" Stretch="Fill" />
                 <Label x:Name="imsakvakti" Content="ii:ii" Width="43" Height="23" Margin="0,0,-2,0"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox Margin="-145,50,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
+        <GroupBox Margin="-145,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
             <StackPanel Margin="0,0,0,0" Height="70" Width="50" >
                 <Label Content="Güneş" Margin="0,0,0,0" FontSize="10" Height="23" Width="43"/>
                 <Image Source="/gunes48.png" Width="20" Height="24" Stretch="Uniform" />
                 <Label x:Name="gunesvakti" Content="gg:gg" Width="43" Height="23" Margin="0,0,-2,0"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox Margin="-35,50,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
+        <GroupBox Margin="-35,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
 
 
             <StackPanel Margin="0,0,0,0" Height="70" Width="50">
@@ -42,7 +44,7 @@
                 <Label x:Name="ogleVakti" Content="oo:oo" Width="50" Height="27"  RenderTransformOrigin="0.49,1.346" Margin="0,0,-9,0" />
             </StackPanel>
         </GroupBox>
-        <GroupBox Margin="75,50,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
+        <GroupBox Margin="75,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
 
 
             <StackPanel Margin="0,0,0,0" Height="70" Width="50">
@@ -51,7 +53,7 @@
                 <Label x:Name="ikindiVakti" Content="ii:ii" Width="50" Height="27"  RenderTransformOrigin="0.49,1.346" Margin="0,0,-9,0" />
             </StackPanel>
         </GroupBox>
-        <GroupBox x:Name="groupboxYatsi" Margin="295,50,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
+        <GroupBox x:Name="groupboxYatsi" Margin="295,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" Background="Transparent" >
 
 
             <StackPanel Margin="0,0,0,0" Height="70" Width="50">
@@ -69,15 +71,15 @@
         <Label Content="Akşam" HorizontalAlignment="Left" Margin="292,265,0,0" VerticalAlignment="Top"/>
         <Label Content="İkindi" HorizontalAlignment="Left" Margin="249,265,0,0" VerticalAlignment="Top"/>
         <Label Content="__________________________________________________________________________________________________________________________________________________" HorizontalAlignment="Left" Margin="20,296,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="gun1" Content="gun1" HorizontalAlignment="Left" Margin="20,291,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="gun1" Content="gun1" Foreground="White" HorizontalAlignment="Left" Margin="20,291,0,0" VerticalAlignment="Top"/>
         <Label x:Name="gun2" Content="gun2" HorizontalAlignment="Left" Margin="20,322,0,0" VerticalAlignment="Top"/>
         <Label x:Name="gun3" Content="gun3" HorizontalAlignment="Left" Margin="20,353,0,0" VerticalAlignment="Top"/>
         <Label x:Name="gun4" Content="gun4" HorizontalAlignment="Left" Margin="20,384,0,0" VerticalAlignment="Top"/>
         <Label x:Name="gun5" Content="gun5" HorizontalAlignment="Left" Margin="20,410,0,0" VerticalAlignment="Top"/>
         <Label x:Name="gun6" Content="gun6" HorizontalAlignment="Left" Margin="20,436,0,0" VerticalAlignment="Top"/>
         <Label x:Name="gun7" Content="gun7" HorizontalAlignment="Left" Margin="20,467,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="imsak1" HorizontalAlignment="Left" Margin="84,296,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top"/>
-        <TextBlock x:Name="imsak2" HorizontalAlignment="Left" Margin="84,327,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top"/>
+        <TextBlock x:Name="imsak1" Foreground="White" HorizontalAlignment="Left" Margin="84,296,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top"/>
+        <TextBlock x:Name="imsak2" HorizontalAlignment="Left" Margin="84,327,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" />
         <TextBlock x:Name="imsak3" HorizontalAlignment="Left" Margin="84,358,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top"/>
         <TextBlock x:Name="imsak4" HorizontalAlignment="Left" Margin="84,389,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top"/>
         <TextBlock x:Name="imsak5" HorizontalAlignment="Left" Margin="84,415,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top"/>

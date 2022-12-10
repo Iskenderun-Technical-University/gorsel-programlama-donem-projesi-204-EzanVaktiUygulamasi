@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -151,30 +152,45 @@ namespace EzanVakti
                 vakit.Content = "ÖĞLE EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.ogle).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
+                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                arkaplanresmi.Source = new BitmapImage(new Uri(@"gunesImg.jpg", UriKind.RelativeOrAbsolute));
+
             }
             else if (simdi.Hour <= Int32.Parse(ezan1.ikindi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.ikindi.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.ikindi.Remove(0, 3))))
             {
                 vakit.Content = "İKİNDİ EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.ikindi).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
+                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                arkaplanresmi.Source = new BitmapImage(new Uri(@"ogleImg.jpg", UriKind.RelativeOrAbsolute));
             }
             else if (simdi.Hour <= Int32.Parse(ezan1.aksam.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.aksam.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.aksam.Remove(0, 3))))
             {
                 vakit.Content = "AKŞAM EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.aksam).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
-
+                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                arkaplanresmi.Source = new BitmapImage(new Uri(@"ikindiImg.jpg", UriKind.RelativeOrAbsolute));
             }
             else if (simdi.Hour <= Int32.Parse(ezan1.yatsi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.yatsi.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.yatsi.Remove(0, 3))))
             {
                 vakit.Content = "YATSI EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.yatsi).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
+                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                arkaplanresmi.Source = new BitmapImage(new Uri(@"aksamImg.jpg", UriKind.RelativeOrAbsolute));
             }
             else
             {
                 vakit.Content = simdi.Hour+":"+simdi.Minute;
                 groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                arkaplanresmi.Source = new BitmapImage(new Uri(@"yatsiImg.jpg", UriKind.RelativeOrAbsolute));
+                
             }
             
             
