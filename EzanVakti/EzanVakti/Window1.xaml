@@ -6,9 +6,22 @@
         xmlns:local="clr-namespace:EzanVakti"
         mc:Ignorable="d"
         Title="Window1" Height="550" Width="430">
-    <Grid Width="430" Height="530">
-        <Grid Width="50" Height="50" Margin="0,0,0,0"  />
-        <Image x:Name="arkaplanresmi" Stretch="UniformToFill"/>
+    <Grid Width="430" Height="530" OpacityMask="Black">
+        <Rectangle Width="430" Height="500" Stroke="Blue" StrokeThickness="1">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Viewbox x:Name="viewboxResim" Stretch="UniformToFill">
+        <Image x:Name="arkaplanresmi" Source="yatsiImg.jpg"/>    
+        </Viewbox>
+        <Grid Height="300" Width="430">
+            <Rectangle Width="430" Height="500" Stroke="Blue" StrokeThickness="1">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="Black" Opacity="0.4"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
         <Image x:Name="gunesImg"  Stretch="UniformToFill"/>
         <Label x:Name="HijriLabel" Content="HijriLabel" HorizontalAlignment="Left" Margin="39,102,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="GregLabel" Content="GregLabel" HorizontalAlignment="Left" Margin="141,102,0,0" VerticalAlignment="Top" Foreground="White"/>
@@ -32,7 +45,7 @@
         <GroupBox Margin="-145,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
             <StackPanel Margin="0,0,0,0" Height="70" Width="50" >
                 <Label Content="Güneş" Margin="0,0,0,0" FontSize="10" Height="23" Foreground="White" Width="43"/>
-                <Image Source="/gunes48.png" Width="20" Height="24" Stretch="Uniform" />
+                <Image Source="/gunes48.png" Width="20" Height="24" Stretch="Uniform" Opacity="0.5"/>
                 <Label x:Name="gunesvakti" Content="gg:gg" Width="43" Height="23" Margin="0,0,-2,0" Foreground="White"/>
             </StackPanel>
         </GroupBox>
@@ -121,6 +134,8 @@
         <TextBlock x:Name="yatsi5" HorizontalAlignment="Left" Margin="338,415,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock x:Name="yatsi6" HorizontalAlignment="Left" Margin="338,441,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock x:Name="yatsi7" HorizontalAlignment="Left" Margin="338,472,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Foreground="White"/>
+        <Grid/>
+        <Grid/>
 
     </Grid>
 </Window>

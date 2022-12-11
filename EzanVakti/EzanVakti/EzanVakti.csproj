@@ -7,6 +7,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="aksamImg.jpg" />
     <None Remove="gunes48.png" />
     <None Remove="gunesImg.jpg" />
     <None Remove="ikindi48.png" />
@@ -29,6 +30,7 @@
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="aksamImg.jpg" />
     <Resource Include="gunes48.png" />
     <Resource Include="gunesImg.jpg" />
     <Resource Include="ikindi48.png" />
