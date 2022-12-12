@@ -118,7 +118,7 @@ namespace EzanVakti
                 }
 
             }
-            GregLabel.Content = ezan.GregDay + " " + ezan.GregAylar + " " + ezan.GregYear;
+            GregLabel.Content ="  " +ezan.GregDay + "\n" + ezan.GregAylar + "\n" + ezan.GregYear;
            // YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
             AksamVakti.Content = ezan.aksam;
             imsakvakti.Content = ezan.imsak;
@@ -130,49 +130,61 @@ namespace EzanVakti
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            YerelSaatLabel.Content=DateTime.Now.ToLongTimeString();
+            YerelSaatLabel.Content="Yerel saat\n  "+DateTime.Now.ToString("HH:mm");
         }
         void vakit_check(object sender,EventArgs e)
         {
             DateTime simdi = DateTime.Now;
-            if(simdi.Hour<=Int32.Parse(ezan1.imsak.Remove(2))&&(simdi.Hour < Int32.Parse(ezan1.imsak.Remove(2)) || simdi.Minute<=Int32.Parse(ezan1.imsak.Remove(0,3))))
+            if(simdi.Hour<=Int32.Parse(ezan1.imsak.Remove(2))&&(simdi.Hour < Int32.Parse(ezan1.imsak.Remove(2)) || simdi.Minute<Int32.Parse(ezan1.imsak.Remove(0,3))))
                     {
                 vakit.Content = "İMSAK VAKTİNE KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.imsak).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
             }
-               else if(simdi.Hour <= Int32.Parse(ezan1.gunes.Remove(2))&&(simdi.Hour < Int32.Parse(ezan1.gunes.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.gunes.Remove(0, 3))))
+               else if(simdi.Hour <= Int32.Parse(ezan1.gunes.Remove(2))&&(simdi.Hour < Int32.Parse(ezan1.gunes.Remove(2)) || simdi.Minute < Int32.Parse(ezan1.gunes.Remove(0, 3))))
                {
                 vakit.Content = "GÜNES VAKTİNE KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.gunes).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
             }
-            else if (simdi.Hour <= Int32.Parse(ezan1.ogle.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.ogle.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.ogle.Remove(0, 3))))
+            else if (simdi.Hour <= Int32.Parse(ezan1.ogle.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.ogle.Remove(2)) || simdi.Minute < Int32.Parse(ezan1.ogle.Remove(0, 3))))
             {
                 vakit.Content = "ÖĞLE EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.ogle).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
-                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                rectGunes.Stroke = System.Windows.Media.Brushes.Orange;
+                rectGunes.Fill.Opacity = 1.0;
+                KareGunes.Foreground = System.Windows.Media.Brushes.Orange;
+                gunesvakti.Foreground = System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                gunesresim.Source = new BitmapImage(new Uri(@"gunes48Orange.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"gunesImg.jpg", UriKind.RelativeOrAbsolute));
 
             }
-            else if (simdi.Hour <= Int32.Parse(ezan1.ikindi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.ikindi.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.ikindi.Remove(0, 3))))
+            else if (simdi.Hour <= Int32.Parse(ezan1.ikindi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.ikindi.Remove(2)) || simdi.Minute < Int32.Parse(ezan1.ikindi.Remove(0, 3))))
             {
                 vakit.Content = "İKİNDİ EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.ikindi).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
-                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                rectOgle.Stroke = System.Windows.Media.Brushes.Orange;
+                rectOgle.Fill.Opacity = 1.0;
+                KareOgle.Foreground = System.Windows.Media.Brushes.Orange;
+                ogleVakti.Foreground= System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                ogleresim.Source = new BitmapImage(new Uri(@"ogleOrange3.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"ogleImg.jpg", UriKind.RelativeOrAbsolute));
             }
-            else if (simdi.Hour <= Int32.Parse(ezan1.aksam.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.aksam.Remove(2)) || simdi.Minute <= Int32.Parse(ezan1.aksam.Remove(0, 3))))
+            else if (simdi.Hour <= Int32.Parse(ezan1.aksam.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.aksam.Remove(2)) || simdi.Minute < Int32.Parse(ezan1.aksam.Remove(0, 3))))
             {
                 vakit.Content = "AKŞAM EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.aksam).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
-                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                rectIkındı.Stroke = System.Windows.Media.Brushes.Orange;
+                rectIkındı.Fill.Opacity= 1.0;
+                KareIkindi.Foreground = System.Windows.Media.Brushes.Orange;
+                ikindiVakti.Foreground = System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                ikindiresim.Source = new BitmapImage(new Uri(@"ikindiOrange.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"ikindiImg.jpg", UriKind.RelativeOrAbsolute));
             }
             else if (simdi.Hour <= Int32.Parse(ezan1.yatsi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.yatsi.Remove(2)) || simdi.Minute < Int32.Parse(ezan1.yatsi.Remove(0, 3))))
@@ -180,15 +192,23 @@ namespace EzanVakti
                 vakit.Content = "YATSI EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.yatsi).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
-                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                rectAksam.Stroke = System.Windows.Media.Brushes.Orange;
+                rectAksam.Fill.Opacity = 1.0;
+                KareAksam.Foreground = System.Windows.Media.Brushes.Orange;
+                AksamVakti.Foreground= System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                aksamresim.Source = new BitmapImage(new Uri(@"aksamOrange.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"aksamImg.jpg", UriKind.RelativeOrAbsolute));
             }
             else
             {
                 vakit.Content = simdi.Hour+":"+simdi.Minute;
-                groupboxYatsi.BorderBrush = System.Windows.Media.Brushes.Yellow;
+                rectYatsi.Stroke = System.Windows.Media.Brushes.Orange;
+                rectYatsi.Fill.Opacity= 1.0;
+                KareYatsi.Foreground = System.Windows.Media.Brushes.Orange;
+                yatsiVakti.Foreground = System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                yatsiresim.Source = new BitmapImage(new Uri(@"yatsiOrange.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"yatsiImg.jpg", UriKind.RelativeOrAbsolute));
                 
             }

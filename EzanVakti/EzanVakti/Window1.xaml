@@ -7,77 +7,102 @@
         mc:Ignorable="d"
         Title="Window1" Height="550" Width="430">
     <Grid Width="430" Height="530" OpacityMask="Black">
-        <Rectangle Width="430" Height="500" Stroke="Blue" StrokeThickness="1">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="Black" Opacity="0.5"/>
-            </Rectangle.Fill>
-        </Rectangle>
+
+
         <Viewbox x:Name="viewboxResim" Stretch="UniformToFill">
-        <Image x:Name="arkaplanresmi" Source="yatsiImg.jpg"/>    
+            <Image x:Name="arkaplanresmi" />
         </Viewbox>
-        <Grid Height="300" Width="430">
-            <Rectangle Width="430" Height="500" Stroke="Blue" StrokeThickness="1">
-                <Rectangle.Fill>
+        <Grid Height="500" Width="430">
+            <Ellipse Width="1100" Height="1000" Margin="-450,60,0,0" Stroke="Black" StrokeThickness="0">
+                <Ellipse.Fill>
                     <SolidColorBrush Color="Black" Opacity="0.4"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <Grid x:Name="gridYatsi" Margin="295,35,8,120" Width="50" Height="70" >
+            
+            <Rectangle x:Name="rectYatsi" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
+
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
                 </Rectangle.Fill>
             </Rectangle>
+            <Label x:Name="KareYatsi" Content="Yatsı" Height="23" Width="43" FontSize="10" Foreground="White" Margin="9,0,0,41" />
+            
+                <Image x:Name="yatsiresim" Height="50" Source="/yatsiWhite.png" Width="50" RenderTransformOrigin="-0.507,0.523" Opacity="1" OpacityMask="White" Margin="-4,0,0,0"/>
+            
+        
+            <Label x:Name="yatsiVakti" Content="yy:yy" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="7,0,0,-38" />
+
+        </Grid>
+        <Grid x:Name="gridImsak" Width="50" Height="70" Margin="-255,35,8,120" >
+
+            <Rectangle x:Name="rectImsak" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
+
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="KareImsak" Content="imsak" Foreground="White" Margin="3,0,0,41" FontSize="10" Height="23" Width="43"/>
+            <Image x:Name="imsakresim" Source="/imsakWhite.png" Width="50" Height="50" Stretch="UniformToFill" Margin="-15,0,0,0" />
+            <Label x:Name="imsakvakti" Content="ii:ii" Foreground="White" Width="43" Height="23" Margin="0,0,-15,-37"/>
+        </Grid>
+        <Grid x:Name="gridGunes" Width="50" Height="70" Margin="-145,35,8,120"  >
+
+            <Rectangle x:Name="rectGunes" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
+
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="KareGunes" Content="Güneş" Margin="5,0,0,40" FontSize="10" Height="23" Foreground="White" Width="43"/>
+            <Image x:Name="gunesresim" Source="/gunesBeyaz.png" Width="30" Height="30" Stretch="UniformToFill" Opacity="1" Margin="0,0,15,0"/>
+            <Label x:Name="gunesvakti" Content="gg:gg" Width="43" Height="23" Foreground="White" Margin="0,39,0,0"/>
+        </Grid>
+        <Grid x:Name="gridOGle" Width="50" Height="70" Margin="-35,35,8,120"  >
+
+            <Rectangle x:Name="rectOgle" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
+
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="KareOgle" Content="Öğle" Height="23" Width="43" FontSize="10" Foreground="White" Margin="8,0,0,37"/>
+            <Image x:Name="ogleresim" Height="50" Source="/ogleWhite.png" Width="50" Stretch="UniformToFill" RenderTransformOrigin="-0.507,0.523" Margin="-16,0,0,0"/>
+            <Label x:Name="ogleVakti" Content="oo:oo" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="0,43,-9,0" />
+        </Grid>
+        <Grid x:Name="gridIkındı" Width="50" Height="70" Margin="75,35,8,120"  >
+
+            <Rectangle x:Name="rectIkındı" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
+
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="KareIkindi" Content="ikindi" Height="23" Width="43" FontSize="10" Foreground="White" Margin="6,0,0,40"/>
+            <Image x:Name="ikindiresim" Height="50" Source="/ikindiWhite.png" Width="50" Stretch="UniformToFill" RenderTransformOrigin="-0.507,0.523" Margin="-16,0,0,0"/>
+            <Label x:Name="ikindiVakti" Content="ii:ii" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="9,44,0,0" />
+        </Grid>
+        <Grid x:Name="gridAksam" Width="50" Height="70" Margin="185,35,8,120"  >
+
+            <Rectangle x:Name="rectAksam" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
+
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="KareAksam" Content="Akşam" Height="23" Width="43" FontSize="10" Foreground="White" Margin="0,0,0,39"/>
+            <Image x:Name="aksamresim" Height="50" Source="/aksamWhite.png" Width="50" Stretch="UniformToFill" RenderTransformOrigin="-0.507,0.523" Margin="-16,0,0,0"/>
+            <Label x:Name="AksamVakti" Content="aa:aa" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="7,40,0,0" />
         </Grid>
         <Image x:Name="gunesImg"  Stretch="UniformToFill"/>
-        <Label x:Name="HijriLabel" Content="HijriLabel" HorizontalAlignment="Left" Margin="39,102,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="GregLabel" Content="GregLabel" HorizontalAlignment="Left" Margin="141,102,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="YerelSaatLabel" Content="YerelSaatLAbel" HorizontalAlignment="Left" Margin="299,102,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <GroupBox x:Name="groupboxAksam" Margin="185,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
-
-
-            <StackPanel Margin="0,0,0,0" Height="70" Width="50">
-                <Label Content="Akşam" Height="23" Width="43" FontSize="10" Foreground="White"/>
-                <Image Height="24" Source="/sunset.png" Width="20" RenderTransformOrigin="-0.507,0.523"/>
-                <Label x:Name="AksamVakti" Content="aa:aa" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="0,0,-9,0" />
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Margin="-255,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
-            <StackPanel Margin="0,0,0,0" Height="70" Width="50" >
-                <Label Content="imsak" Foreground="White" Margin="0,0,0,0" FontSize="10" Height="23" Width="43"/>
-                <Image Source="/sunrise48.png" Width="20" Height="24" Stretch="Fill" />
-                <Label x:Name="imsakvakti" Content="ii:ii" Foreground="White" Width="43" Height="23" Margin="0,0,-2,0"/>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Margin="-145,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
-            <StackPanel Margin="0,0,0,0" Height="70" Width="50" >
-                <Label Content="Güneş" Margin="0,0,0,0" FontSize="10" Height="23" Foreground="White" Width="43"/>
-                <Image Source="/gunes48.png" Width="20" Height="24" Stretch="Uniform" Opacity="0.5"/>
-                <Label x:Name="gunesvakti" Content="gg:gg" Width="43" Height="23" Margin="0,0,-2,0" Foreground="White"/>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Margin="-35,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
-
-
-            <StackPanel Margin="0,0,0,0" Height="70" Width="50">
-                <Label Content="Öğle" Height="23" Width="43" FontSize="10" Foreground="White"/>
-                <Image Height="24" Source="/ogle48.png" Width="20" RenderTransformOrigin="-0.507,0.523"/>
-                <Label x:Name="ogleVakti" Content="oo:oo" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="0,0,-9,0" />
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Margin="75,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" >
-
-
-            <StackPanel Margin="0,0,0,0" Height="70" Width="50">
-                <Label Content="ikindi" Height="23" Width="43" FontSize="10" Foreground="White"/>
-                <Image Height="24" Source="/ikindi48.png" Width="20" RenderTransformOrigin="-0.507,0.523"/>
-                <Label x:Name="ikindiVakti" Content="ii:ii" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="0,0,-9,0" />
-            </StackPanel>
-        </GroupBox>
-        <GroupBox x:Name="groupboxYatsi" Margin="295,35,80,120" Height="75" Width="55" BorderThickness="1" BorderBrush="#FF181E21" Background="Transparent" >
-
-
-            <StackPanel Margin="0,0,0,0" Height="70" Width="50">
-                <Label Content="Yatsı" Height="23" Width="43" FontSize="10" Foreground="White" />
-                <Image Height="24" Source="/yatsi52.png" Width="20" RenderTransformOrigin="-0.507,0.523"/>
-                <Label x:Name="yatsiVakti" Content="yy:yy" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="0,0,-9,0" />
-            </StackPanel>
-        </GroupBox>
-        <Label x:Name="vakit" Content="vakit" HorizontalAlignment="Left" Margin="48,32,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="kalanZaman" Content="kalan" HorizontalAlignment="Left" Margin="46,71,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="HijriLabel" Content="HijriLabel" HorizontalAlignment="Left" Margin="75,133,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="GregLabel" Content="GregLabel" HorizontalAlignment="Left" Margin="167,132,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="YerelSaatLabel" Content="11:40" HorizontalAlignment="Left" Margin="260,134,0,0" VerticalAlignment="Top" Foreground="White"/>
+       
+        <Label x:Name="vakit" Content="ÖĞLE EZANINA KALAN" HorizontalAlignment="Left" Margin="27,80,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="kalanZaman" Content="00:00:00" HorizontalAlignment="Left" Margin="34,101,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
         <Label Content="İmsak" HorizontalAlignment="Left" Margin="84,265,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label Content="Güneş" HorizontalAlignment="Left" Margin="141,265,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label Content="Öğle" HorizontalAlignment="Left" Margin="194,265,0,0" VerticalAlignment="Top" Foreground="White"/>
@@ -136,6 +161,7 @@
         <TextBlock x:Name="yatsi7" HorizontalAlignment="Left" Margin="338,472,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Foreground="White"/>
         <Grid/>
         <Grid/>
+        <Label Content="|&#xA;|" Foreground="White" HorizontalAlignment="Left" Margin="134,132,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
