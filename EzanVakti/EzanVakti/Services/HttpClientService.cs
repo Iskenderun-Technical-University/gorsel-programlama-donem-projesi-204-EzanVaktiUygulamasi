@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 using Picasso.Model;
 
 namespace Picasso.Services
@@ -18,9 +19,15 @@ namespace Picasso.Services
         {
             var uri = new Uri(url);
             var result = new HttpResult<T>() { IsSuccess = false };
-
+            try
+            {
+                await _client.GetAsync(uri);
+            }
+            catch
+            {
+                MessageBox.Show("internet bağlantısı mevcut değil");
+            }
             using var httpResponse = await _client.GetAsync(uri);
-
             if (httpResponse.IsSuccessStatusCode)
             {
                 var jsonResponse = await httpResponse.Content.ReadAsStringAsync();

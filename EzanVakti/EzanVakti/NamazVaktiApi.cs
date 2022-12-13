@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using Picasso.Model;
 using Picasso.Services;
-using Picasso.EzanVakti;
+using Picasso.EzanVakitleri;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using System.Windows;
+using EzanVakti;
 
 public class EzanListe
 {
@@ -108,12 +109,13 @@ public class NamazVaktiApi
         var result = await httpService.GetObjectAsync<PrayerTime>(PrayerTimeApi);
         return result;
     }
-    public async void EzanFileInput()
+    public async Task EzanFileInput()
     {
         string[] Aylar = { "Ocak", "Şubat", "Mart", "Nisan", "Mayis","Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasim", "Aralik" };
         string[] GunlerKisa = { "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz" };
         string[] GunlerUzun = { "Pazartesi", "Sali", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar" };
         string gunUzun="", gunKisa="";
+        
         var res = await EzanApi();
         String FilePath;
         if (res.IsSuccess)
@@ -130,37 +132,41 @@ public class NamazVaktiApi
                 Directory.CreateDirectory(DirectoryPath);
             }
             using (FileStream setting = new FileStream(@"C:\Program Files\EzanVakti\ayar.txt", FileMode.Create))
-            {
+            {   
+               
                 //BinaryWriter setbw=new BinaryWriter(setting);
                 StreamWriter setsw = new StreamWriter(setting);
                 FilePath = DirectoryPath + FileName(city, year, month);
                 // this.DosyaYolu = FilePath;
-                setsw.WriteLine(FilePath);
-                setsw.WriteLine(city);
-                setsw.WriteLine(year);
-                setsw.WriteLine(month);
+              await setsw.WriteLineAsync(FilePath);
+                await setsw.WriteLineAsync(city);
+                await setsw.WriteLineAsync(year.ToString());
+                await setsw.WriteLineAsync(month.ToString());
                 //   setsw.WriteLine(11);
                 setsw.Close();
+                
               //  setting.Close();
             }
+
             using (FileStream fs = new FileStream(FilePath, FileMode.Create))
             {
+                
                 //BinaryWriter bw=new BinaryWriter(fs);
                 StreamWriter bw = new StreamWriter(fs);
                 foreach (var ezan in res.Data.data)
                 {
 
-                    bw.WriteLine(ezan.Timings.Fajr.Remove(5, 6));
-                    bw.WriteLine(ezan.Timings.Sunrise.Remove(5, 6));
-                    bw.WriteLine(ezan.Timings.Dhuhr.Remove(5, 6));
-                    bw.WriteLine(ezan.Timings.Asr.Remove(5, 6));
-                    bw.WriteLine(ezan.Timings.Sunset.Remove(5, 6));
-                    bw.WriteLine(ezan.Timings.Isha.Remove(5, 6));
-                    bw.WriteLine(ezan.Date.Readable);
-                    bw.WriteLine(ezan.Date.Gregorian.Date);
-                    bw.WriteLine(Int32.Parse(ezan.Date.Gregorian.Day));
+                    await bw.WriteLineAsync(ezan.Timings.Fajr.Remove(5, 6));
+                    await bw.WriteLineAsync(ezan.Timings.Sunrise.Remove(5, 6));
+                    await bw.WriteLineAsync(ezan.Timings.Dhuhr.Remove(5, 6));
+                    await bw.WriteLineAsync(ezan.Timings.Asr.Remove(5, 6));
+                    await bw.WriteLineAsync(ezan.Timings.Sunset.Remove(5, 6));
+                    await bw.WriteLineAsync(ezan.Timings.Isha.Remove(5, 6));
+                    await bw.WriteLineAsync(ezan.Date.Readable);
+                    await bw.WriteLineAsync(ezan.Date.Gregorian.Date);
+                    await bw.WriteLineAsync(ezan.Date.Gregorian.Day);
                     // bw.Write(ezan.Date.Gregorian.Day);
-                    bw.WriteLine(ezan.Date.Gregorian.Weekday.En);
+                    await bw.WriteLineAsync(ezan.Date.Gregorian.Weekday.En);
                     if (ezan.Date.Gregorian.Weekday.En == "Monday")
                     {
                         gunKisa = GunlerKisa[0];
@@ -196,23 +202,27 @@ public class NamazVaktiApi
                         gunKisa = GunlerKisa[6];
                         gunUzun = GunlerUzun[6];
                     }
-                    bw.WriteLine(gunKisa);
-                    bw.WriteLine(gunUzun);
-                    bw.WriteLine(ezan.Date.Gregorian.Month.Number);
-                    bw.WriteLine(ezan.Date.Gregorian.Month.En);
-                    bw.WriteLine(Aylar[(ezan.Date.Gregorian.Month.Number) - 1]);
-                    bw.WriteLine(ezan.Date.Gregorian.Year);
-                    bw.WriteLine(ezan.Date.Hijri.Date);
-                    bw.WriteLine(Int32.Parse(ezan.Date.Hijri.Day));
+                    await bw.WriteLineAsync(gunKisa);
+                    await bw.WriteLineAsync(gunUzun);
+                    await bw.WriteLineAsync(ezan.Date.Gregorian.Month.Number.ToString());
+                    await bw.WriteLineAsync(ezan.Date.Gregorian.Month.En);
+                    await bw.WriteLineAsync(Aylar[(ezan.Date.Gregorian.Month.Number) - 1]);
+                    await bw.WriteLineAsync(ezan.Date.Gregorian.Year);
+                    await bw.WriteLineAsync(ezan.Date.Hijri.Date);
+                    await bw.WriteLineAsync(ezan.Date.Hijri.Day);
                     // bw.Write(ezan.Date.Hijri.Day);
-                    bw.WriteLine(ezan.Date.Hijri.Weekday.En);
-                    bw.WriteLine(ezan.Date.Hijri.Month.Number);
-                    bw.WriteLine(ezan.Date.Hijri.Month.En);
-                    bw.WriteLine(ezan.Date.Hijri.Year);
+                    await bw.WriteLineAsync(ezan.Date.Hijri.Weekday.En);
+                    await bw.WriteLineAsync(ezan.Date.Hijri.Month.Number.ToString());
+                    await bw.WriteLineAsync(ezan.Date.Hijri.Month.En);
+                    await bw.WriteLineAsync(ezan.Date.Hijri.Year);
 
                 }
                 bw.Close();
-              //  fs.Close();
+                //  fs.Close();
+              /*  MainWindow mainWindow = (Application.Current.MainWindow as MainWindow);
+                Window1 window1 = new Window1();
+                window1.Show();
+                mainWindow.Close();*/
             }
         }
         

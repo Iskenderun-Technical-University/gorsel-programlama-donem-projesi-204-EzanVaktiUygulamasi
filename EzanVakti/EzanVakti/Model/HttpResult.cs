@@ -1,4 +1,4 @@
-﻿using Picasso.EzanVakti;
+﻿using Picasso.EzanVakitleri;
 
 namespace Picasso.Model
 {

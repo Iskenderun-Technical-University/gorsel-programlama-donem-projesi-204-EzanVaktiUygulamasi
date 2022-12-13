@@ -13,7 +13,7 @@ namespace EzanVakti
     /// </summary>
     public partial class App : Application
     {
-        private void Application_Startup(object sender, StartupEventArgs e)
+        private async void Application_Startup(object sender, StartupEventArgs e)
         {
            NamazVaktiApi namaz=new NamazVaktiApi();
             DateTime date = DateTime.Now;
@@ -31,7 +31,7 @@ namespace EzanVakti
                     namaz.City = namaz.CurrentCity;
                     namaz.Year = date.Year;
                     namaz.Month = date.Month;
-                    namaz.EzanFileInput();
+                    await namaz.EzanFileInput();
                     //namaz.MevcutDosya = true;
                    /* while(true)
                     {    NamazVaktiApi ezancheck=new NamazVaktiApi();

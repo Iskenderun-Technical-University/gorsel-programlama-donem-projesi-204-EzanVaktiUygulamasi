@@ -26,7 +26,10 @@ namespace EzanVakti
         public Window1()
         {
             InitializeComponent();
+           
             DispatcherTimer timer=new DispatcherTimer();
+          //  mainWindow.Close();
+           
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Tick += vakit_check;
