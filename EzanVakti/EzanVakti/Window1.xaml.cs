@@ -122,6 +122,7 @@ namespace EzanVakti
 
             }
             GregLabel.Content ="  " +ezan.GregDay + "\n" + ezan.GregAylar + "\n" + ezan.GregYear;
+            HijriLabel.Content = namaz.CurrentCity;
            // YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
             AksamVakti.Content = ezan.aksam;
             imsakvakti.Content = ezan.imsak;
