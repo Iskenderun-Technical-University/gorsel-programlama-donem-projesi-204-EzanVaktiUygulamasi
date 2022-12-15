@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +25,7 @@ namespace EzanVakti
     public partial class Window1 : Window
     {    
        public EzanListe ezan1=new EzanListe();
+       
         public Window1()
         {
             InitializeComponent();
@@ -41,6 +44,8 @@ namespace EzanVakti
             List<EzanListe> liste = new List<EzanListe>();
             EzanListe ezan = new EzanListe();
             namaz.EzanFileOutput(liste);
+            
+          
 
             foreach(var item in liste)
             {
@@ -132,6 +137,7 @@ namespace EzanVakti
             yatsiVakti.Content = ezan.yatsi;
          //   vakit.Content= ezan1.imsak.Remove(2)+" " + ezan1.imsak.Remove(0, 3);
         }
+
         void timer_Tick(object sender, EventArgs e)
         {
             YerelSaatLabel.Content="Yerel saat\n  "+DateTime.Now.ToString("HH:mm");

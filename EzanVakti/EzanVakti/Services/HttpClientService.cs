@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Sockets;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace Picasso.Services
             {
                 await _client.GetAsync(uri);
             }
-            catch
+            catch(SocketException e)
             {
                 MessageBox.Show("internet bağlantısı mevcut değil");
             }

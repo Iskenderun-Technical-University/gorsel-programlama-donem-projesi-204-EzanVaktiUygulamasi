@@ -3161,11 +3161,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\manas\\Desktop\\ezanvakti github\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
+      "projectUniqueName": "C:\\Users\\manas\\Desktop\\ezan vakti 14 aralık\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
       "projectName": "EzanVakti",
-      "projectPath": "C:\\Users\\manas\\Desktop\\ezanvakti github\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
+      "projectPath": "C:\\Users\\manas\\Desktop\\ezan vakti 14 aralık\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
       "packagesPath": "C:\\Users\\manas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\manas\\Desktop\\ezanvakti github\\EzanVakti\\EzanVakti\\obj\\",
+      "outputPath": "C:\\Users\\manas\\Desktop\\ezan vakti 14 aralık\\EzanVakti\\EzanVakti\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
