@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace EzanVakti
 {
@@ -46,7 +47,11 @@ namespace EzanVakti
             List<EzanListe> liste = new List<EzanListe>();
             EzanListe ezan = new EzanListe();
             namaz.EzanFileOutput(liste);
-
+            new ToastContentBuilder()
+                .AddArgument("asa")
+                .AddText("dfg")
+                .Show();
+                
            
 
             foreach(var item in liste)

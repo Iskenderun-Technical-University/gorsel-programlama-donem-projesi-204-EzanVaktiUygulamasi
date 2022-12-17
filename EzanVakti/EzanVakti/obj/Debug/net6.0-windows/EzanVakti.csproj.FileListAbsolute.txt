@@ -256,3 +256,4 @@ C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-wi
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows\EzanVakti.pdb
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows\EzanVakti.genruntimeconfig.cache
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows\ref\EzanVakti.dll
+C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\bin\Debug\net6.0-windows\Microsoft.Toolkit.Uwp.Notifications.dll
