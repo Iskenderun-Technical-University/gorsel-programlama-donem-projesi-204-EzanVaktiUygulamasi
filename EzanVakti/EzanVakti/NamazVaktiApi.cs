@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
-using Picasso.Model;
 using Picasso.Services;
 using Picasso.EzanVakitleri;
 using System.Security.Cryptography.X509Certificates;
@@ -89,7 +88,7 @@ public class NamazVaktiApi
         get { return currentCity; }
         set { currentCity = value; }
     }
-    public static string Place(string Sehir,int yil,int ay)
+    public static string PlaceUri(string Sehir,int yil,int ay)
     {
        return $"http://api.aladhan.com/v1/calendarByCity?city={Sehir}&country=Turkey&method=13&month={ay}&year={yil}";
        // return $"http://api.aladhan.com/v1/calendarByCity?city={Sehir}&country=Turkey&method=13&annual=true&year={yil}";
@@ -102,11 +101,13 @@ public class NamazVaktiApi
     {
         return $"/_{Sehir}_{yil}_{ay}.txt";
     }
-    private async Task<HttpResult<PrayerTime>> EzanApi()
+    private async Task<PrayerTime> EzanApi()
     {
-        var PrayerTimeApi=Place(city,year,month);
-        var httpService = new HttpClientService();
-        var result = await httpService.GetObjectAsync<PrayerTime>(PrayerTimeApi);
+        var PrayerTimeApi=PlaceUri(city,year,month);
+        /*var httpService = new HttpClientService();
+        var result = await httpService.GetObjectAsync<PrayerTime>(PrayerTimeApi);*/
+        var httpService = new CLientModel();
+        var result=await httpService.ProcessApi<PrayerTime>(PrayerTimeApi);
         return result;
     }
     public async Task EzanFileInput()
@@ -118,8 +119,6 @@ public class NamazVaktiApi
         
         var res = await EzanApi();
         String FilePath;
-        if (res.IsSuccess)
-        {
 
 
             if (!Directory.Exists(@"C:\Program Files\EzanVakti"))
@@ -153,7 +152,7 @@ public class NamazVaktiApi
                 
                 //BinaryWriter bw=new BinaryWriter(fs);
                 StreamWriter bw = new StreamWriter(fs);
-                foreach (var ezan in res.Data.data)
+                foreach (var ezan in res.data)
                 {
 
                     await bw.WriteLineAsync(ezan.Timings.Fajr.Remove(5, 6));
@@ -224,7 +223,7 @@ public class NamazVaktiApi
                 window1.Show();
                 mainWindow.Close();*/
             }
-        }
+        
         
     }
     public void EzanFileCheck()

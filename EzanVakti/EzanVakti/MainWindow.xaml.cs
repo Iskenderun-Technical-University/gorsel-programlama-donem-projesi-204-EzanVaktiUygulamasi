@@ -16,9 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Picasso;
-using Picasso.Model;
 using System.Threading;
 using System.IO;
+using System.Net.Http;
 
 namespace EzanVakti
 {
@@ -107,56 +107,23 @@ namespace EzanVakti
             List<EzanListe> lst = new List<EzanListe>();
             NamazVaktiApi ezanvakti = new NamazVaktiApi();
 
-//            Window1 window1 = new Window1();
-
             ComboBoxItem deger = (ComboBoxItem)sehir.SelectedItem;
             ezanvakti.City = deger.Content.ToString();
             ezanvakti.Year = dt1.Year;
             ezanvakti.Month = dt1.Month;
-            //var a = ezanvakti.EzanApi();
 
-            //  var a = await ezanvakti.EzanApi();
-            //essageBox.Show(ezanvakti.City);
-            
-                await ezanvakti.EzanFileInput();
-            
-            
-           Window1 window1 = new Window1();
-            window1.Show();
-            this.Close();
-            /*foreach (var ezan in a.Data.data)
+            try
             {
-                MessageBox.Show($"{ezan.Date.Gregorian.Date}      {ezan.Timings.Fajr.Remove(5, 6)}       {ezan.Timings.Sunrise.Remove(5, 6)}       {ezan.Timings.Dhuhr.Remove(5, 6)}       {ezan.Timings.Asr.Remove(5, 6)}       {ezan.Timings.Sunset.Remove(5, 6)}       {ezan.Timings.Isha.Remove(5, 6)}");
-            }*/
-            /*using var watcher = new FileSystemWatcher(@"C:\Program Files\EzanVakti");
-            watcher.NotifyFilter= NotifyFilters.Attributes
-                                 | NotifyFilters.CreationTime
-                                 | NotifyFilters.DirectoryName
-                                 | NotifyFilters.FileName
-                                 | NotifyFilters.LastAccess
-                                 | NotifyFilters.LastWrite
-                                 | NotifyFilters.Security
-                                 | NotifyFilters.Size;
-            watcher.Created += OnCreated;
-            watcher.Changed+=OnChanged;
-             watcher.Filter = "*.txt";
-            //watcher.Path = @"C:\Program Files\EzanVakti";
-            watcher.IncludeSubdirectories = true;
-           watcher.EnableRaisingEvents = true;
-            textbox1.Text = "Dosya olusturuldu";*/
-            
-            // MessageBox.Show("Dosya olusturuldu");
+                await ezanvakti.EzanFileInput();
 
-            /*ezanvakti.EzanFileOutput(lst);
-             foreach(var item in lst)
-             {
-                 MessageBox.Show(item.GregMonthEn+" "+item.GregDay+" "+item.imsak);
-             }*/
+                Window1 window1 = new Window1();
+                window1.Show();
+                this.Close();
+            }
+            catch(HttpRequestException )
+            {
 
-
-          
-            nextPage.Visibility=Visibility.Visible;
-           
+            }
          
         }
 

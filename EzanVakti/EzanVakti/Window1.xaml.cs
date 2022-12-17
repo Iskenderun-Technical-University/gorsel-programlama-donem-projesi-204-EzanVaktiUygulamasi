@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Sockets;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +27,7 @@ namespace EzanVakti
     public partial class Window1 : Window
     {    
        public EzanListe ezan1=new EzanListe();
-       
+        private string Sehir { get; set; }
         public Window1()
         {
             InitializeComponent();
@@ -44,8 +46,8 @@ namespace EzanVakti
             List<EzanListe> liste = new List<EzanListe>();
             EzanListe ezan = new EzanListe();
             namaz.EzanFileOutput(liste);
-            
-          
+
+           
 
             foreach(var item in liste)
             {
@@ -127,8 +129,11 @@ namespace EzanVakti
 
             }
             GregLabel.Content ="  " +ezan.GregDay + "\n" + ezan.GregAylar + "\n" + ezan.GregYear;
-            HijriLabel.Content = namaz.CurrentCity;
-           // YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
+           HijriLabel.Content = namaz.CurrentCity;
+      
+            havadurumuapi(namaz.CurrentCity);
+          
+            // YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
             AksamVakti.Content = ezan.aksam;
             imsakvakti.Content = ezan.imsak;
             gunesvakti.Content = ezan.gunes;
@@ -137,7 +142,31 @@ namespace EzanVakti
             yatsiVakti.Content = ezan.yatsi;
          //   vakit.Content= ezan1.imsak.Remove(2)+" " + ezan1.imsak.Remove(0, 3);
         }
+         public async void havadurumuapi(String sehir)
+        {
+            HavaDurumuApi havadurumu = new HavaDurumuApi(sehir);
+            
+          
+            try
+            {
+             var result= await havadurumu.WeatherApi();
 
+                    foreach (var item in result.weather)
+                    {
+                        HavaDurumu.Text = result.main.temp + "° " + item.description;
+                    }
+            }
+            catch(HttpRequestException e)
+            {
+          
+            }
+            catch(JsonException e)
+            {
+
+            }
+
+
+        }
         void timer_Tick(object sender, EventArgs e)
         {
             YerelSaatLabel.Content="Yerel saat\n  "+DateTime.Now.ToString("HH:mm");
@@ -167,7 +196,7 @@ namespace EzanVakti
                 KareGunes.Foreground = System.Windows.Media.Brushes.Orange;
                 gunesvakti.Foreground = System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
-                gunesresim.Source = new BitmapImage(new Uri(@"gunes48Orange.png", UriKind.RelativeOrAbsolute));
+                gunesresim.Source = new BitmapImage(new Uri(@"gunesturuncu.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"gunesImg.jpg", UriKind.RelativeOrAbsolute));
 
             }
@@ -176,6 +205,8 @@ namespace EzanVakti
                 vakit.Content = "İKİNDİ EZANINA KALAN";
                 TimeSpan d = DateTime.Parse(ezan1.ikindi).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
                 kalanZaman.Content = d;
+
+
                 rectOgle.Stroke = System.Windows.Media.Brushes.Orange;
                 rectOgle.Fill.Opacity = 1.0;
                 KareOgle.Foreground = System.Windows.Media.Brushes.Orange;
@@ -183,6 +214,14 @@ namespace EzanVakti
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
                 ogleresim.Source = new BitmapImage(new Uri(@"ogleOrange3.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"ogleImg.jpg", UriKind.RelativeOrAbsolute));
+
+                rectGunes.Stroke = System.Windows.Media.Brushes.DarkGray;
+                rectGunes.Fill.Opacity = 0.5;
+                KareGunes.Foreground = System.Windows.Media.Brushes.White;
+                gunesvakti.Foreground = System.Windows.Media.Brushes.White;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                gunesresim.Source = new BitmapImage(new Uri(@"gunesBeyaz.png", UriKind.RelativeOrAbsolute));
+
             }
             else if (simdi.Hour <= Int32.Parse(ezan1.aksam.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.aksam.Remove(2)) || simdi.Minute < Int32.Parse(ezan1.aksam.Remove(0, 3))))
             {
@@ -196,6 +235,15 @@ namespace EzanVakti
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
                 ikindiresim.Source = new BitmapImage(new Uri(@"ikindiOrange.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"ikindiImg.jpg", UriKind.RelativeOrAbsolute));
+                rectOgle.Stroke = System.Windows.Media.Brushes.DarkGray;
+                rectOgle.Fill.Opacity = 0.5;
+                KareOgle.Foreground = System.Windows.Media.Brushes.White;
+                ogleVakti.Foreground = System.Windows.Media.Brushes.White;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                
+                ogleresim.Source = new BitmapImage(new Uri(@"ogleWhite.png", UriKind.RelativeOrAbsolute));
+                
+
             }
             else if (simdi.Hour <= Int32.Parse(ezan1.yatsi.Remove(2)) && (simdi.Hour < Int32.Parse(ezan1.yatsi.Remove(2)) || simdi.Minute < Int32.Parse(ezan1.yatsi.Remove(0, 3))))
             {
@@ -209,6 +257,13 @@ namespace EzanVakti
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
                 aksamresim.Source = new BitmapImage(new Uri(@"aksamOrange.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"aksamImg.jpg", UriKind.RelativeOrAbsolute));
+
+                rectIkındı.Stroke = System.Windows.Media.Brushes.DarkGray;
+                rectIkındı.Fill.Opacity = 0.5;
+                KareIkindi.Foreground = System.Windows.Media.Brushes.White;
+                ikindiVakti.Foreground = System.Windows.Media.Brushes.White;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                ikindiresim.Source = new BitmapImage(new Uri(@"ikindiWhite.png", UriKind.RelativeOrAbsolute));
             }
             else
             {
@@ -220,7 +275,13 @@ namespace EzanVakti
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
                 yatsiresim.Source = new BitmapImage(new Uri(@"yatsiOrange.png", UriKind.RelativeOrAbsolute));
                 arkaplanresmi.Source = new BitmapImage(new Uri(@"yatsiImg.jpg", UriKind.RelativeOrAbsolute));
-                
+                rectAksam.Stroke = System.Windows.Media.Brushes.DarkGray;
+                rectAksam.Fill.Opacity = 0.5;
+                KareAksam.Foreground = System.Windows.Media.Brushes.White;
+                AksamVakti.Foreground = System.Windows.Media.Brushes.White;
+                // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
+                aksamresim.Source = new BitmapImage(new Uri(@"aksamWhite.png", UriKind.RelativeOrAbsolute));
+
             }
             
             

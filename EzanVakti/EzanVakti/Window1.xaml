@@ -28,7 +28,7 @@
                     <SolidColorBrush Color="Black" Opacity="0.5"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Label x:Name="KareYatsi" Content="Yatsı" Height="23" Width="43" FontSize="10" Foreground="White" Margin="9,0,0,41" />
+            <Label x:Name="KareYatsi" Content="Yatsı1" Height="23" Width="43" FontSize="10" Foreground="White" Margin="9,0,0,41" />
             
                 <Image x:Name="yatsiresim" Height="50" Source="/yatsiWhite.png" Width="50" RenderTransformOrigin="-0.507,0.523" Opacity="1" OpacityMask="White" Margin="-4,0,0,0"/>
             
@@ -161,6 +161,7 @@
         <TextBlock x:Name="yatsi7" HorizontalAlignment="Left" Margin="338,472,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Foreground="White"/>
         <Grid/>
         <Grid/>
-        
+        <TextBlock x:Name="HavaDurumu" HorizontalAlignment="Left" Margin="75,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Height="20" Foreground="White"/>
+
     </Grid>
 </Window>

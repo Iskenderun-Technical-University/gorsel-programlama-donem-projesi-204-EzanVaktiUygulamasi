@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YOQdTyGduwPN6xNQmM+uzt5KVS0Vjoa3nKX0CLv4tGxMhnjFinYmh1+zxEMuLEk4zPjeZpGkGIhuGbo0aNFIdg==",
+  "dgSpecHash": "fmapBvUzjfKdwqmww1mYdth70b4MrQD+8kvZ1t8daZZuTkz69AznFL65YYU0/0ZbZ8aoJh+bd9XURg6DdWyCfw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\manas\\Desktop\\ezan vakti 14 aralık\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
+  "projectFilePath": "C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\manas\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\manas\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
