@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows10.0.22621.0"
+          "net6.0-windows10.0.22000.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,8 +30,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows10.0.22621": {
-            "targetAlias": "net6.0-windows10.0.22621.0",
+          "net6.0-windows10.0.22000": {
+            "targetAlias": "net6.0-windows10.0.22000.0",
             "projectReferences": {}
           }
         },
@@ -42,8 +42,8 @@
         }
       },
       "frameworks": {
-        "net6.0-windows10.0.22621": {
-          "targetAlias": "net6.0-windows10.0.22621.0",
+        "net6.0-windows10.0.22000": {
+          "targetAlias": "net6.0-windows10.0.22000.0",
           "dependencies": {
             "Microsoft.CSharp": {
               "target": "Package",
@@ -81,7 +81,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.22621.27, 10.0.22621.27]"
+              "version": "[10.0.22000.27, 10.0.22000.27]"
             }
           ],
           "frameworkReferences": {

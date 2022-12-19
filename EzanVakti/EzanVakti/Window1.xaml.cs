@@ -19,6 +19,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Media;
+using System.Security.Cryptography;
 
 namespace EzanVakti
 {
@@ -28,6 +30,7 @@ namespace EzanVakti
     public partial class Window1 : Window
     {    
        public EzanListe ezan1=new EzanListe();
+        public EzanListe ezan2 = new EzanListe();
         private string Sehir { get; set; }
         public Window1()
         {
@@ -39,6 +42,7 @@ namespace EzanVakti
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Tick += vakit_check;
+            timer.Tick += bildirim;
             timer.Start();
             
             DateTime bugun=DateTime.Now;
@@ -47,14 +51,27 @@ namespace EzanVakti
             List<EzanListe> liste = new List<EzanListe>();
             EzanListe ezan = new EzanListe();
             namaz.EzanFileOutput(liste);
-            new ToastContentBuilder()
+            string dosya = @"C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\AllahuEkberBildirimSesi.mp3";
+            SoundPlayer ses = new SoundPlayer(dosya);
+            /* MediaPlayer mp3=new MediaPlayer();
+             mp3.Open(new Uri(@"C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\AllahuEkberBildirimSesi.mp3", UriKind.RelativeOrAbsolute));
+             mp3.Play();*/
+            //  sescal();
+         //   sescal1();
+        //    ToastAudio toast=new ToastAudio();
+          //  toast.Silent = false;
+           // toast.Src = new Uri("C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\AllahuEkberBildirimSesi.mp3",UriKind.RelativeOrAbsolute);
+           /* new ToastContentBuilder()
                 .AddArgument("asa")
-                .AddText("dfg")
-                .Show();
+                .AddText("kjnhkj")
+                .AddAudio(toast)
                 
-           
+               //.AddAudio(new Uri("C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\AllahuEkberBildirimSesi.mp3", UriKind.RelativeOrAbsolute),false,false)
+                .Show();*/
 
-            foreach(var item in liste)
+             //ses.Play();
+
+            foreach (var item in liste)
             {
                 if(item.GregDay==bugun.Day)
                 {   
@@ -72,6 +89,7 @@ namespace EzanVakti
                 }
                 else if(item.GregDay==bugun.Day+1)
                 {
+                    ezan2 = item;
                     gun2.Content=item.GregHaftaninGunuKisa;
                     imsak2.Text = item.imsak;
                     gunes2.Text = item.gunes;
@@ -145,7 +163,8 @@ namespace EzanVakti
             ogleVakti.Content = ezan.ogle;
             ikindiVakti.Content = ezan.ikindi;
             yatsiVakti.Content = ezan.yatsi;
-         //   vakit.Content= ezan1.imsak.Remove(2)+" " + ezan1.imsak.Remove(0, 3);
+            //   vakit.Content= ezan1.imsak.Remove(2)+" " + ezan1.imsak.Remove(0, 3);
+
         }
          public async void havadurumuapi(String sehir)
         {
@@ -172,9 +191,34 @@ namespace EzanVakti
 
 
         }
+        public void sescal1()
+        {
+            SoundPlayer ses1 = new SoundPlayer(@"C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\AllahuEkberBildirimSesi1.wav");
+            ses1.Play();
+        }
+        public void sescal()
+        {
+            MediaPlayer mp3 = new MediaPlayer();
+            mp3.Open(new Uri(@"C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\AllahuEkberBildirimSesi.mp3", UriKind.Relative));
+            mp3.Play();
+            
+        }
         void timer_Tick(object sender, EventArgs e)
         {
             YerelSaatLabel.Content="Yerel saat\n  "+DateTime.Now.ToString("HH:mm");
+        }
+        void bildirim(object sender, EventArgs e)
+        {
+            DateTime simdi = DateTime.Now;
+            if (simdi.Hour == Int32.Parse(ezan1.imsak.Remove(2)) && simdi.Minute == Int32.Parse(ezan1.imsak.Remove(0, 3))&&simdi.Second==0)
+            {
+
+                ToastContentBuilder toastContent = new ToastContentBuilder();
+                toastContent.AddArgument("asa");
+                toastContent.AddText("imsak vakti");
+                toastContent.Show();
+                sescal1();
+            }
         }
         void vakit_check(object sender,EventArgs e)
         {
@@ -238,8 +282,8 @@ namespace EzanVakti
                 KareIkindi.Foreground = System.Windows.Media.Brushes.Orange;
                 ikindiVakti.Foreground = System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
-                ikindiresim.Source = new BitmapImage(new Uri(@"ikindiOrange.png", UriKind.RelativeOrAbsolute));
-                arkaplanresmi.Source = new BitmapImage(new Uri(@"ikindiImg.jpg", UriKind.RelativeOrAbsolute));
+                ikindiresim.Source = new BitmapImage(new Uri(@"/ikindiOrange.png", UriKind.RelativeOrAbsolute));
+                arkaplanresmi.Source = new BitmapImage(new Uri(@"/ikindiImg.jpg", UriKind.RelativeOrAbsolute));
                 rectOgle.Stroke = System.Windows.Media.Brushes.DarkGray;
                 rectOgle.Fill.Opacity = 0.5;
                 KareOgle.Foreground = System.Windows.Media.Brushes.White;
@@ -272,6 +316,11 @@ namespace EzanVakti
             }
             else
             {
+                DateTime saat = new DateTime(simdi.Year, simdi.Month, simdi.Day, 0, 1, 0);
+                //TimeSpan d = DateTime.Parse(simdi.ToString("HH:mm:ss tt")).Subtract(DateTime.Parse(ezan2.imsak));
+                TimeSpan d = (DateTime.Parse(ezan1.imsak).Subtract(DateTime.Parse(saat.ToString("HH:mm:ss tt")))).Add(DateTime.Parse(saat.ToString("HH:mm:ss tt")).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt"))));
+              //  TimeSpan d = DateTime.Parse(ezan1.imsak).Subtract(DateTime.Parse(simdi.ToString("HH:mm:ss tt")));
+                kalanZaman.Content = d;
                 vakit.Content = simdi.Hour+":"+simdi.Minute;
                 rectYatsi.Stroke = System.Windows.Media.Brushes.Orange;
                 rectYatsi.Fill.Opacity= 1.0;
@@ -279,7 +328,8 @@ namespace EzanVakti
                 yatsiVakti.Foreground = System.Windows.Media.Brushes.Orange;
                 // groupboxYatsi.Background=System.Windows.Media.Brushes.Black;
                 yatsiresim.Source = new BitmapImage(new Uri(@"yatsiOrange.png", UriKind.RelativeOrAbsolute));
-                arkaplanresmi.Source = new BitmapImage(new Uri(@"yatsiImg.jpg", UriKind.RelativeOrAbsolute));
+                arkaplanresmi.Source = new BitmapImage(new Uri("yatsiImg.jpg", UriKind.RelativeOrAbsolute));
+
                 rectAksam.Stroke = System.Windows.Media.Brushes.DarkGray;
                 rectAksam.Fill.Opacity = 0.5;
                 KareAksam.Foreground = System.Windows.Media.Brushes.White;

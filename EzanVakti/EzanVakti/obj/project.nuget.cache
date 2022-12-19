@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5dgv3iE5bVysZeO/JjC+/rK1RQRj5D0fWp8kD9nRULWPVwWBs9f5QDA8ua2W2kfkUGfLFigMmtpuo//+lYX9/A==",
+  "dgSpecHash": "GBwtAikxD1R/1b+4dav7o7oYTRvUEWrKL0c0h8fjKge8t686MqWnuI33f+Wb6g0JIIGaSl79ReU3Jz/W2GC2VQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\EzanVakti.csproj",
   "expectedPackageFiles": [
@@ -68,7 +68,7 @@
     "C:\\Users\\manas\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\manas\\.nuget\\packages\\system.web.services.description\\4.9.0\\system.web.services.description.4.9.0.nupkg.sha512",
     "C:\\Users\\manas\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
-    "C:\\Users\\manas\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.27\\microsoft.windows.sdk.net.ref.10.0.22621.27.nupkg.sha512"
+    "C:\\Users\\manas\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22000.27\\microsoft.windows.sdk.net.ref.10.0.22000.27.nupkg.sha512"
   ],
   "logs": []
 }
