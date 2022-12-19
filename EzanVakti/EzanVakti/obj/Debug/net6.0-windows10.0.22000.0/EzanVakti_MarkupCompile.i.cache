@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\App.xaml
-21940794329
+31725540679
 1743263810
-132124800254
+14132970304
 221-798151810
-MainWindow.xaml;Window1.xaml;
+MainWindow.xaml;Menu.xaml;Window1.xaml;
 
-False
+True
 

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:EzanVakti"
         mc:Ignorable="d"
         Title="Window1" Height="550" Width="430">
+    
     <Grid Width="430" Height="530" OpacityMask="Black">
 
 
@@ -13,6 +14,7 @@
             <Image x:Name="arkaplanresmi" />
         </Viewbox>
         <Grid Height="500" Width="430">
+
             <Ellipse Width="1100" Height="1000" Margin="-450,60,0,0" Stroke="Black" StrokeThickness="0">
                 <Ellipse.Fill>
                     <SolidColorBrush Color="Black" Opacity="0.4"/>
@@ -21,7 +23,7 @@
         </Grid>
 
         <Grid x:Name="gridYatsi" Margin="295,35,8,120" Width="50" Height="70" >
-            
+
             <Rectangle x:Name="rectYatsi" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
 
                 <Rectangle.Fill>
@@ -29,10 +31,10 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Label x:Name="KareYatsi" Content="Yatsı1" Height="23" Width="43" FontSize="10" Foreground="White" Margin="9,0,0,41" />
-            
-                <Image x:Name="yatsiresim" Height="50" Source="/yatsiWhite.png" Width="50" RenderTransformOrigin="-0.507,0.523" Opacity="1" OpacityMask="White" Margin="-4,0,0,0"/>
-            
-        
+
+            <Image x:Name="yatsiresim" Height="50" Source="/yatsiWhite.png" Width="50" RenderTransformOrigin="-0.507,0.523" Opacity="1" OpacityMask="White" Margin="-4,0,0,0"/>
+
+
             <Label x:Name="yatsiVakti" Content="yy:yy" Width="50" Height="27" Foreground="White" RenderTransformOrigin="0.49,1.346" Margin="7,0,0,-38" />
 
         </Grid>
@@ -89,7 +91,7 @@
             <Rectangle x:Name="rectAksam" Width="50" Height="70" StrokeThickness="1" Stroke="DarkGray" RadiusX="10" RadiusY="10">
 
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                    <SolidColorBrush x:Name="rectDeneme" Color="Black" Opacity="0.5"/>
                 </Rectangle.Fill>
             </Rectangle>
             <Label x:Name="KareAksam" Content="Akşam" Height="23" Width="43" FontSize="10" Foreground="White" Margin="0,0,0,39"/>
@@ -100,7 +102,7 @@
         <Label x:Name="HijriLabel" Content="HijriLabel1" HorizontalAlignment="Left" Margin="75,133,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="GregLabel" Content="GregLabel" HorizontalAlignment="Left" Margin="167,132,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="YerelSaatLabel" Content="11:40" HorizontalAlignment="Left" Margin="260,134,0,0" VerticalAlignment="Top" Foreground="White"/>
-       
+
         <Label x:Name="vakit" Content="ÖĞLE EZANINA KALAN" HorizontalAlignment="Left" Margin="27,80,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="kalanZaman" Content="00:00:00" HorizontalAlignment="Left" Margin="34,101,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
         <Label Content="İmsak" HorizontalAlignment="Left" Margin="84,265,0,0" VerticalAlignment="Top" Foreground="White"/>
@@ -160,8 +162,45 @@
         <TextBlock x:Name="yatsi6" HorizontalAlignment="Left" Margin="338,441,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock x:Name="yatsi7" HorizontalAlignment="Left" Margin="338,472,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Foreground="White"/>
         <Grid/>
-        <Grid/>
+        <Grid>
+
+        </Grid>
         <TextBlock x:Name="HavaDurumu" HorizontalAlignment="Left" Margin="75,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" Height="20" Foreground="White"/>
 
+        <Button x:Name="Menubutton" Margin="340,30,36,424" Click="Menubutton_Click" MouseEnter="Menubutton_MouseEnter" Width="50" Height="50" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentControl>
+                        <Border x:Name="myborder"  CornerRadius="95" Background="Black" Opacity="0.6">
+                            <Grid>
+                                <Image Source="/menuIcon.png" Width="27" Height="27" Stretch="UniformToFill" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+                    </ContentControl>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="myborder" Value="orange"/>
+                            <Setter Property="Opacity" TargetName="myborder" Value="0.7"/>
+                        </Trigger> 
+                    </ControlTemplate.Triggers>
+                    <!--Border CornerRadius="90" BorderThickness="1">
+                        <Grid>
+                            <Ellipse x:Name="dugmeSekil" Width="50" Height="50" Margin="0,0,0,0" Stroke="Black" StrokeThickness="0">
+                            <Ellipse.Fill>
+                                <SolidColorBrush x:Name="dugmearkaplan" Color="Black" Opacity="0.4"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                            <Image Source="/menuIcon.png" Width="20" Height="20" Stretch="UniformToFill" Margin="0,0,0,0" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="dugmearkaplan" Property="Color" Value="Orange"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers-->
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+ 
     </Grid>
 </Window>

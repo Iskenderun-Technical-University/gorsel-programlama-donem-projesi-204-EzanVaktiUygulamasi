@@ -1,0 +1,38 @@
+﻿<Window x:Class="EzanVakti.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EzanVakti"
+        mc:Ignorable="d"
+        Title="Menu" Height="550" Width="430">
+    <Grid>
+        <Grid>
+            <Rectangle x:Name="rectlocation" Height="50" Width="420" Margin="10,104,0,362" Stroke="Black" StrokeThickness="0">
+                <Rectangle.Fill>
+                    <SolidColorBrush x:Name="locationSolid" Color="Orange" Opacity="0"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Content="Şehir Değiştir" HorizontalAlignment="Left" Margin="104,127,0,0" VerticalAlignment="Top" FontSize="15"/>
+        </Grid>
+        <Button x:Name="SehirDegistirButon" Width="50" Height="50" Margin="20,114,360,370" Click="Menubutton_Click" MouseEnter="Menubutton_MouseEnter" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentControl>
+                        <Border x:Name="myborder"  CornerRadius="95" Background="orange" Opacity="0.6">
+                            <Grid>
+                                <Image Source="/icons8-location-update-50.png" Width="30" Height="30" Stretch="UniformToFill" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+                    </ContentControl>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>
