@@ -11,7 +11,7 @@ using System.IO;
 using System.Windows;
 using EzanVakti;
 
-public class EzanListe
+public class EzanListe  //namaz vakitleri verilerinin çeşitli değişkenlerde liste olarak tutulduğu sınıf
 {
     public string imsak { get; set; }
     public string gunes { get; set; }
@@ -36,126 +36,129 @@ public class EzanListe
     public int HijriMonthNumber { get; set; }
     public string HijriMonthEn { get; set; }
     public string HijriYear { get; set; }
-    //public List<EzanListe> liste;
+
 }
-public class Listte
-{
-    public List<EzanListe> DAta { get; set; }
-}
+
 public class NamazVaktiApi
-{
-    private static string city;
-    private int month=0;
-    private int year=2022;
-    private int currentMonth = 0;
-    private int currentYear = 0;
-    private string currentCity;
-    private string DosyaYolu;
-    private bool mevcutDosya;
+{               // namaz vakitleri verilerinin internetten api olarak çekileceği, çekilen verileri dosyaya yazma ve dosyadan okuma işlemini yapacak methodların bulunduğu sınıf
+
+    private static string city; //hangi şehir için api isteğinin gönderileceği string türünde değişken 
+
+    private int month=0;//hangi ay için api isteğinin gönderileceği int türünde değişken
+
+    private int year=2022;//hangi yıl için api isteğinin gönderileceği int türünde değişken(standart 2022)
+
+    private int currentMonth = 0;//şu an hangi ay olduğunu int türünde tutan (0-12), sayıyı dosyadan alan değişken
+
+    private int currentYear = 0;//şu an hangi yıl olduğunu int türünde tutan (0-12), sayıyı dosyadan alan değişken
+    private string currentCity;//şu an hangi şehir için dosyada verilerin tutulduğunu gösteren string türünde değişken
+
+    private string DosyaYolu;// Verilerin tutulduğu *.txt dosyasının hangi klasörde saklandığını tutan string türünde değişken
+   
+    private bool mevcutDosya;//dosyanın mevcut olup olmadığını bool türünde tutan değişken
 
     public string City
     {
-        get { return city; }
+        get { return city; } //city değişkeni için get ve set methodları
         set { city = value; }
     }
     public int Year
     {
-        get { return year; }
+        get { return year; } //year değişkeni için get ve set methodları
         set { year = value; }
     }
     public int Month
     {
-        get { return month; }
+        get { return month; } //month değişkeni için get ve set methodları
         set { month = value; }
     }
     public bool MevcutDosya
     {
-        get { return mevcutDosya; }
+        get { return mevcutDosya; }//mevcutDosya değişkeni için get ve set methodları
         set { mevcutDosya = value; }
     }
     public int CurrentMonth
     {
-        get { return currentMonth; }
+        get { return currentMonth; }//currentMonth değişkeni için get ve set methodları
         set { currentMonth = value; }
     }
     public int CurrentYear
     {
-        get { return currentYear; }
+        get { return currentYear; }//currentyear değişkeni için get ve set methodları
         set { currentYear = value; }
     }
     public string CurrentCity
     {
-        get { return currentCity; }
+        get { return currentCity; }//currentcity değişkeni için get ve set methodları
         set { currentCity = value; }
     }
     public static string PlaceUri(string Sehir,int yil,int ay)
     {
        return $"http://api.aladhan.com/v1/calendarByCity?city={Sehir}&country=Turkey&method=13&month={ay}&year={yil}";
-       // return $"http://api.aladhan.com/v1/calendarByCity?city={Sehir}&country=Turkey&method=13&annual=true&year={yil}";
+     //Sehir,ay ve yil parametreleri ile namaz vakitleri verilerinin çekileceği linki string olarak döndüren fonksiyon
     }
     public static string DirectoryName(string Sehir, int yil)
     {
-        return $"{Sehir}/{yil}";
+        return $"{Sehir}/{yil}"; //Sehir ve ay isimleri ile ayrı ayrı oluşturulan klasör yolu
     }
     public static string FileName(string Sehir,int yil,int ay)
     {
-        return $"/_{Sehir}_{yil}_{ay}.txt";
+        return $"/_{Sehir}_{yil}_{ay}.txt"; //gaziantep_2022_12.txt şeklinde oluşturulan txt dosyasının adı
     }
     private async Task<PrayerTime> EzanApi()
-    {
-        var PrayerTimeApi=PlaceUri(city,year,month);
-        /*var httpService = new HttpClientService();
-        var result = await httpService.GetObjectAsync<PrayerTime>(PrayerTimeApi);*/
-        var httpService = new CLientModel();
-        var result=await httpService.ProcessApi<PrayerTime>(PrayerTimeApi);
-        return result;
+    {  //namaz vakitleri için api isteği gönderecek ve gelen verileri PrayerTime sınıfına yollayacak method
+        var PrayerTimeApi=PlaceUri(city,year,month); //şehir yıl ay bilgileri ile PlaceUri methodundan string olarak döndürülen linki string olarak tutacak değişken
+        var httpService = new CLientModel(); //Picasso.Services namespacenden ClientModel() sınıfı nesnesi oluşturuldu
+        var result=await httpService.ProcessApi<PrayerTime>(PrayerTimeApi); //api isteği gönderildi, veriler prayertime türünde geldi
+        return result; //sonuç prayertime sınıf türüne geri döndürüldü
     }
-    public async Task EzanFileInput()
+    public async Task EzanFileInput()//verilerin api ile serverden çekip dosyaya yazdıran async Task türünde method
     {
-        string[] Aylar = { "Ocak", "Şubat", "Mart", "Nisan", "Mayis","Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasim", "Aralik" };
-        string[] GunlerKisa = { "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz" };
-        string[] GunlerUzun = { "Pazartesi", "Sali", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar" };
-        string gunUzun="", gunKisa="";
+        string[] Aylar = { "Ocak", "Şubat", "Mart", "Nisan", "Mayis","Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasim", "Aralik" };//ay isimlerini string olarak tutan dizi 
+        string[] GunlerKisa = { "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz" };//haftanın günlerinin kısaltılmış isimlerini tutan dizi
+        string[] GunlerUzun = { "Pazartesi", "Sali", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar" };//haftanın günlerinin isimlerini tutan dizi
+        string gunUzun = "";//gün ismini tutan string değişken
+            string gunKisa="";//kısaltılmış gün ismini tutan string değişken 
         
-        var res = await EzanApi();
+        var res = await EzanApi(); //EzanApi fonksiyonu await anahtar sözcüğü ile çağrılıyor.cevabın geri döndürülmesi beklenerek res isimli değişkene atanıyor
         String FilePath;
 
 
-            if (!Directory.Exists(@"C:\Program Files\EzanVakti"))
-            {
+            if (!Directory.Exists(@"C:\Program Files\EzanVakti"))//C:\Program Files\EzanVakti dosya yolunda EzanVakti isimli klasörün var olup olmadığı kontrol ediliyor, klasör mevcut değilse yeni klasör oluşturuluyor.
+        {
                 Directory.CreateDirectory(@"C:\Program Files\EzanVakti");
             }
             var DirectoryPath = @"C:\Program Files\EzanVakti\" + DirectoryName(city, year);
             if (!Directory.Exists(DirectoryPath))
-            {
-                Directory.CreateDirectory(DirectoryPath);
+        {////C:\Program Files\EzanVakti\sehir\yil dosya yolundaki klasörlerin var olup olmadığı kontrol ediliyor, klasör mevcut değilse yeni klasör oluşturuluyor.
+            Directory.CreateDirectory(DirectoryPath);
             }
             using (FileStream setting = new FileStream(@"C:\Program Files\EzanVakti\ayar.txt", FileMode.Create))
-            {   
+            {  //FileStream sınıfı ile ayar.txt dosyası oluşturuldu 
                
-                //BinaryWriter setbw=new BinaryWriter(setting);
-                StreamWriter setsw = new StreamWriter(setting);
-                FilePath = DirectoryPath + FileName(city, year, month);
-                // this.DosyaYolu = FilePath;
-              await setsw.WriteLineAsync(FilePath);
-                await setsw.WriteLineAsync(city);
-                await setsw.WriteLineAsync(year.ToString());
-                await setsw.WriteLineAsync(month.ToString());
-                //   setsw.WriteLine(11);
-                setsw.Close();
+            
+                StreamWriter setsw = new StreamWriter(setting); //oluşturulan dosya streamwriter sınıfına tanımlandı
+                FilePath = DirectoryPath + FileName(city, year, month); //mevcut dosyanın saklanacağı klasörün dosya yolu filepath isimli string değişkene atandı
+         
+              await setsw.WriteLineAsync(FilePath); //mevcut dosyanın dosya yolu string olarak dosyaya async olarak await anahtar sözcüğü ile dosyaya yazma işlemi bekleniyor
+                await setsw.WriteLineAsync(city);////mevcut şehrin ismi string olarak dosyaya async olarak await anahtar sözcüğü ile dosyaya yazma işlemi bekleniyor
+            await setsw.WriteLineAsync(year.ToString());//mevcut yıl dosyaya async olarak await anahtar sözcüğü ile dosyaya yazma işlemi bekleniyor
+            await setsw.WriteLineAsync(month.ToString());//mevcut ay dosyaya async olarak await anahtar sözcüğü ile dosyaya yazma işlemi bekleniyor
+
+            setsw.Close();//dosyaya yazma işlemi bitti dosya kapatılıyor
                 
-              //  setting.Close();
+     
             }
 
             using (FileStream fs = new FileStream(FilePath, FileMode.Create))
             {
-                
-                //BinaryWriter bw=new BinaryWriter(fs);
-                StreamWriter bw = new StreamWriter(fs);
-                foreach (var ezan in res.data)
+                //filestream sınıfı ile filepath değişkeninde tutulan mevcut dosya yoluna txt dosyası oluşturuluyor
+        
+                StreamWriter bw = new StreamWriter(fs);//oluşturulan dosya streamwriter sınıfına tanımlandı
+                foreach (var ezan in res.data) //PrayerTime sınıfındaki veriler liste olarak foreach ile sıralanıyor.
                 {
 
-                    await bw.WriteLineAsync(ezan.Timings.Fajr.Remove(5, 6));
+                    await bw.WriteLineAsync(ezan.Timings.Fajr.Remove(5, 6)); //namaz vakitleri bilgileri asenkron olarak await anahtar sözcüğü ile txt dosyasına yazdırılıyor
                     await bw.WriteLineAsync(ezan.Timings.Sunrise.Remove(5, 6));
                     await bw.WriteLineAsync(ezan.Timings.Dhuhr.Remove(5, 6));
                     await bw.WriteLineAsync(ezan.Timings.Asr.Remove(5, 6));
@@ -164,11 +167,11 @@ public class NamazVaktiApi
                     await bw.WriteLineAsync(ezan.Date.Readable);
                     await bw.WriteLineAsync(ezan.Date.Gregorian.Date);
                     await bw.WriteLineAsync(ezan.Date.Gregorian.Day);
-                    // bw.Write(ezan.Date.Gregorian.Day);
+                    
                     await bw.WriteLineAsync(ezan.Date.Gregorian.Weekday.En);
                     if (ezan.Date.Gregorian.Weekday.En == "Monday")
                     {
-                        gunKisa = GunlerKisa[0];
+                        gunKisa = GunlerKisa[0];  //api den çekilen haftanın günleri ingilizce olduğu için türkçeye çevrilerek dosyaya türkçe olarak yazdırılıyor.
                         gunUzun = GunlerUzun[0];
                     }
                     else if (ezan.Date.Gregorian.Weekday.En == "Tuesday")
@@ -205,11 +208,11 @@ public class NamazVaktiApi
                     await bw.WriteLineAsync(gunUzun);
                     await bw.WriteLineAsync(ezan.Date.Gregorian.Month.Number.ToString());
                     await bw.WriteLineAsync(ezan.Date.Gregorian.Month.En);
-                    await bw.WriteLineAsync(Aylar[(ezan.Date.Gregorian.Month.Number) - 1]);
+                    await bw.WriteLineAsync(Aylar[(ezan.Date.Gregorian.Month.Number) - 1]); 
                     await bw.WriteLineAsync(ezan.Date.Gregorian.Year);
                     await bw.WriteLineAsync(ezan.Date.Hijri.Date);
                     await bw.WriteLineAsync(ezan.Date.Hijri.Day);
-                    // bw.Write(ezan.Date.Hijri.Day);
+                
                     await bw.WriteLineAsync(ezan.Date.Hijri.Weekday.En);
                     await bw.WriteLineAsync(ezan.Date.Hijri.Month.Number.ToString());
                     await bw.WriteLineAsync(ezan.Date.Hijri.Month.En);
@@ -217,54 +220,39 @@ public class NamazVaktiApi
 
                 }
                 bw.Close();
-                //  fs.Close();
-              /*  MainWindow mainWindow = (Application.Current.MainWindow as MainWindow);
-                Window1 window1 = new Window1();
-                window1.Show();
-                mainWindow.Close();*/
+   
             }
         
         
     }
     public void EzanFileCheck()
-    {   
+    {   //dosyanın mevcut olup olmadığını kontrol eden void method
         
         if(!File.Exists(@"C:\Program Files\EzanVakti\ayar.txt"))
-        {
+        { //dosya mevcut değil ise bu sınıftaki mevcutDosya bool değişkeni true değeri alır
             this.mevcutDosya = true;
         }
 
-        else{
+        else{ //
             using (FileStream ayar = new FileStream(@"C:\Program Files\EzanVakti\ayar.txt", FileMode.Open))
-            {
+            {  //dosya mevcut ise dosyada yazan dosya yolu bu sınıftaki Dosyayolu değişkenine atanır
                 StreamReader sett = new StreamReader(ayar);
                 this.DosyaYolu = sett.ReadLine();
-                this.currentCity = sett.ReadLine();
-                this.currentYear = Int32.Parse(sett.ReadLine());
-                this.currentMonth = Int32.Parse(sett.ReadLine());
-                sett.Close();
-           //     ayar.Close();
+                this.currentCity = sett.ReadLine();//dosyada yazan mevcut şehir ismi currentCity değişkenine atanır
+                this.currentYear = Int32.Parse(sett.ReadLine());//mevcut yıl currentyear değişkenine atanır
+                this.currentMonth = Int32.Parse(sett.ReadLine());//mevcut ay currentmonth değişkenine atanır
+                sett.Close(); //dosya kapanır.
+       
             }
-            // string filp= @"C:\Program Files\EzanVakti\hatay\2022";
+         
             if (!File.Exists(this.DosyaYolu))
-            {
+            { //mevcut dosya yolundaki dosya mevcut değil ise mevcutDosya değişkeni true değeri alır.
                 this.mevcutDosya = true;
             }
             else
-            {
+            {  //mevcut dosya yolundaki dosya mevcut ise mevcutDosya değişkeni true değeri alır.
                 this.mevcutDosya = false;
-               /* using (FileStream ayar = new FileStream(@"C:\Program Files\EzanVakti\ayar.txt", FileMode.Open))
-                {
-                    StreamReader sett = new StreamReader(ayar);
-                    this.DosyaYolu = sett.ReadLine();
-                    this.currentCity = sett.ReadLine();
-                    this.currentYear = Int32.Parse(sett.ReadLine());
-                    this.currentMonth = Int32.Parse(sett.ReadLine());
-                    sett.Close();
-                 //   ayar.Close();
-                }*/
-               // using var watcher = new FileSystemWatcher(@"C:\Program Files\EzanVakti\ayar.txt");
-               
+
 
             }
         }
@@ -288,9 +276,9 @@ public class NamazVaktiApi
                 this.currentYear = Int32.Parse(sett.ReadLine());
                 this.currentMonth = Int32.Parse(sett.ReadLine());
                 sett.Close();
-              //  ayar.Close();
+          
             }
-            // string filp= @"C:\Program Files\EzanVakti\hatay\2022";
+    
             if (!File.Exists(this.DosyaYolu))
             {
                 this.mevcutDosya = true;
@@ -302,7 +290,6 @@ public class NamazVaktiApi
                 using (FileStream fs = new FileStream(this.DosyaYolu, FileMode.Open))
                 {
 
-                    //  BinaryReader br = new BinaryReader(fs);
                     StreamReader br = new StreamReader(fs);
 
                     while (!br.EndOfStream)
@@ -332,35 +319,10 @@ public class NamazVaktiApi
                             HijriMonthEn = br.ReadLine(),
                             HijriYear = br.ReadLine(),
                         });
-                        /*  ezanliste.imsak=br.ReadLine();
-                          ezanliste.gunes=br.ReadLine();
-                          ezanliste.ogle=br.ReadLine();
-                          ezanliste.ikindi=br.ReadLine();
-                          ezanliste.aksam=br.ReadLine();
-                          ezanliste.yatsi=br.ReadLine();
-                          ezanliste.readable=br.ReadLine();
-                          ezanliste.GregDate=br.ReadLine();
-                          ezanliste.GregDay =int.Parse(br.ReadLine());
-                          ezanliste.GregWeekdayEn = br.ReadLine();
-                          ezanliste.GregHaftaninGunuKisa = br.ReadLine();
-                          ezanliste.GregHaftaninGunuUzun=br.ReadLine();
-                          ezanliste.GregMonthNumber=int.Parse(br.ReadLine());
-                          ezanliste.GregMonthEn=br.ReadLine();
-                          ezanliste.GregAylar=br.ReadLine();
-                          ezanliste.GregYear=br.ReadLine();
-                          ezanliste.HijriDate=br.ReadLine();
-                          ezanliste.HijriDay =int.Parse(br.ReadLine());
-                          ezanliste.HijriWeekdayEn=br.ReadLine();
-                          ezanliste.HijriMonthNumber=int.Parse(br.ReadLine());
-                          ezanliste.HijriMonthEn=br.ReadLine();
-                          ezanliste.HijriYear=br.ReadLine();*/
-
-                        //e.DAta.liste.Add(ezanliste);
-                        //  abc.Add(ezanliste);
-                        // listitem.Add(ezanliste);
+ 
                     }
                     br.Close();
-                 //   fs.Close();
+        
                 }
             }
         }
@@ -368,51 +330,5 @@ public class NamazVaktiApi
     
     
     
-    /*public void EzanNode()
-    {
-        var res = EzanApi();
-        EzanListe temp=new EzanListe(), start = null, kayit=new EzanListe();
-        if (res.Result.IsSuccess)
-        {
-            foreach (var ezan in res.Result.Data.data)
-            {
-                kayit.imsak = ezan.Timings.Fajr.Remove(5, 6);
-                kayit.gunes=ezan.Timings.Sunrise.Remove(5, 6);
-                kayit.ogle = ezan.Timings.Dhuhr.Remove(5, 6);
-                kayit.ikindi = ezan.Timings.Asr.Remove(5, 6);
-                kayit.aksam = ezan.Timings.Sunset.Remove(5, 6);
-                kayit.yatsi = ezan.Timings.Isha.Remove(5, 6);
-                kayit.readable = ezan.Date.Readable;
-                kayit.GregDate = ezan.Date.Gregorian.Date;
-                kayit.GregDay = Int32.Parse(ezan.Date.Gregorian.Day);
-                kayit.GregWeekdayEn = ezan.Date.Gregorian.Weekday.En;
-                kayit.GregMonthNumber = ezan.Date.Gregorian.Month.Number;
-                kayit.GregMonthEn = ezan.Date.Gregorian.Month.En;
-                kayit.GregYear = ezan.Date.Gregorian.Year;
-                kayit.HijriDate = ezan.Date.Hijri.Date;
-                kayit.HijriDay = Int32.Parse(ezan.Date.Hijri.Day);
-                kayit.HijriWeekdayEn = ezan.Date.Hijri.Weekday.En;
-                kayit.HijriMonthNumber= ezan.Date.Hijri.Month.Number;
-                kayit.HijriMonthEn = ezan.Date.Hijri.Month.En;
-                kayit.HijriYear = ezan.Date.Hijri.Year;
-
-                if(start==null)
-                {
-                    start = kayit;
-                    kayit.next = null;
-                }
-                else
-                {
-                    temp = start;
-                    while(temp!=null)
-                    {
-                        temp = temp.next;
-                    }
-                    temp.next = kayit;
-                    kayit.next = null;
-                }
-
-            }
-        }
-    }*/
+ 
 }

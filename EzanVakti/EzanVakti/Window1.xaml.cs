@@ -37,8 +37,7 @@ namespace EzanVakti
             InitializeComponent();
            
             DispatcherTimer timer=new DispatcherTimer();
-          //  mainWindow.Close();
-           
+      
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Tick += vakit_check;
@@ -46,30 +45,11 @@ namespace EzanVakti
             timer.Start();
             
             DateTime bugun=DateTime.Now;
-            DateTime dt = new DateTime();
             NamazVaktiApi namaz = new NamazVaktiApi();
             List<EzanListe> liste = new List<EzanListe>();
             EzanListe ezan = new EzanListe();
             namaz.EzanFileOutput(liste);
-       //     string dosya = @"C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\AllahuEkberBildirimSesi.mp3";
-         //   SoundPlayer ses = new SoundPlayer(dosya);
-            /* MediaPlayer mp3=new MediaPlayer();
-             mp3.Open(new Uri(@"C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\AllahuEkberBildirimSesi.mp3", UriKind.RelativeOrAbsolute));
-             mp3.Play();*/
-            //  sescal();
-         //   sescal1();
-        //    ToastAudio toast=new ToastAudio();
-          //  toast.Silent = false;
-           // toast.Src = new Uri("C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\AllahuEkberBildirimSesi.mp3",UriKind.RelativeOrAbsolute);
-           /* new ToastContentBuilder()
-                .AddArgument("asa")
-                .AddText("kjnhkj")
-                .AddAudio(toast)
-                
-               //.AddAudio(new Uri("C:\\Users\\manas\\Desktop\\ezanvakti github1\\EzanVakti\\EzanVakti\\AllahuEkberBildirimSesi.mp3", UriKind.RelativeOrAbsolute),false,false)
-                .Show();*/
-
-             //ses.Play();
+ 
 
             foreach (var item in liste)
             {
@@ -84,7 +64,7 @@ namespace EzanVakti
                     ikindi1.Text = item.ikindi;
                     aksam1.Text = item.aksam;
                     yatsi1.Text = item.yatsi;
-                  //  MessageBox.Show(item.GregDay+" "+item.GregAylar+" "+item.GregYear);
+  
                    
                 }
                 else if(item.GregDay==bugun.Day+1)
@@ -156,14 +136,14 @@ namespace EzanVakti
       
             havadurumuapi(namaz.CurrentCity);
           
-            // YerelSaatLabel.Content = bugun.Hour + ":" + bugun.Minute;
+        
             AksamVakti.Content = ezan.aksam;
             imsakvakti.Content = ezan.imsak;
             gunesvakti.Content = ezan.gunes;
             ogleVakti.Content = ezan.ogle;
             ikindiVakti.Content = ezan.ikindi;
             yatsiVakti.Content = ezan.yatsi;
-            //   vakit.Content= ezan1.imsak.Remove(2)+" " + ezan1.imsak.Remove(0, 3);
+          
 
         }
          public async void havadurumuapi(String sehir)
@@ -177,19 +157,21 @@ namespace EzanVakti
 
                     foreach (var item in result.weather)
                     {
-                        HavaDurumu.Text = result.main.temp + "° " + item.description;
+                        HavaDurumu.Text ="     "+ result.main.temp + "° \n" + item.description;
                     }
             }
-            catch(HttpRequestException e)
+            catch(HttpRequestException)
             {
           
             }
-            catch(JsonException e)
+            catch(JsonException)
             {
 
             }
+            catch(Exception)
+            {
 
-
+            }
         }
         public void sescal()
         {

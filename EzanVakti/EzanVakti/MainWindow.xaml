@@ -9,8 +9,11 @@
         " Width="400
         ">
     <Grid>
+        <Viewbox x:Name="viewboxResim" Stretch="UniformToFill">
+            <Image x:Name="arkaplanresmi" Source="/backgroundcolor.jpg" />
+        </Viewbox>
+        <ComboBox x:Name="sehir" HorizontalAlignment="Center" Margin="0,136,0,0" VerticalAlignment="Top" Width="190" Height="26">
 
-        <ComboBox x:Name="sehir" HorizontalAlignment="Left" Margin="94,163,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Adana"/>
             <ComboBoxItem Content="Adıyaman"/>
             <ComboBoxItem Content="Afyon"/>
@@ -91,11 +94,61 @@
             <ComboBoxItem Content="Osmaniye"/>
             <ComboBoxItem Content="Düzce"/>
         </ComboBox>
-        <Button x:Name="SehirSecim" Content="Seciniz" HorizontalAlignment="Left" Margin="117,205,0,0" VerticalAlignment="Top" Click="SehirSecim_Click"/>
-        <TextBox x:Name="textbox1" HorizontalAlignment="Left" Margin="17,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.784,-1.082" TextChanged="TextBox_TextChanged"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="64,296,0,0" VerticalAlignment="Top" Width="188"/>
-        <Button x:Name="DosyaOut" Content="OutPut" HorizontalAlignment="Left" Margin="211,205,0,0" VerticalAlignment="Top" Click="DosyaOut_Click"/>
-        <Button x:Name="nextPage" Content="Sonraki" HorizontalAlignment="Left" Margin="155,245,0,0" VerticalAlignment="Top" Click="nextPage_Click"/>
+        <!--Button x:Name="SehirSecim" Content="Seciniz" HorizontalAlignment="Left" Margin="32,276,0,0" VerticalAlignment="Top" Click="SehirSecim_Click"/-->
+
+        <Button x:Name="Kapat" Margin="130,397,130,10" Click="Kapat_Click" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentControl>
+                        <Border x:Name="myBorder" Width="119" Height="34" CornerRadius="5" BorderThickness="0.5" BorderBrush="DarkGray" Opacity="0.9" Background="DarkOrange" >
+
+                            <Grid Margin="0,0,0,0" Width="100" Height="30">
+
+                                <Label Content="Kapat" Foreground="White" Width="100" Height="30" FontSize="15" Margin="25,0,0,0" />
+                            </Grid>
+                        </Border>
+                    </ContentControl>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="myBorder" Value="orange"/>
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+        <Label x:Name="sehirseclabel" Content="Bir Şehir Seçiniz" FontSize="18" Foreground="Orange" Height="30" Margin="120,88,120,366" FontWeight="Bold"/>
+        <!--Label Content="Label" HorizontalAlignment="Left" Margin="64,296,0,0" VerticalAlignment="Top" Width="188"/-->
+
+        <Label x:Name="baglantiyoklabel" Content="İnternet Bağlantısı Yok" FontSize="18" VerticalAlignment="Top" Foreground="Orange" Margin="105,373,58,0" FontWeight="Bold"/>
+        <Button x:Name="SehirSec" Margin="130,167,130,258" Click="SehirSec_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentControl>
+                        <Border x:Name="myBorder" Width="119" Height="34" CornerRadius="5" BorderThickness="0.5" BorderBrush="DarkGray" Opacity="1" >
+
+                            <Grid Margin="0,0,0,0" Width="100" Height="30">
+                                <Ellipse x:Name="dugmeSekil" Width="30" Height="30" Margin="-60,0,0,0" Stroke="DarkGray" StrokeThickness="0">
+                                    <Ellipse.Fill>
+                                        <SolidColorBrush x:Name="dugmearkaplan" Color="Orange" Opacity="0.9"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Image Source="/icons8-location-50.png" Width="20" Height="20" Stretch="UniformToFill" Margin="-60,0,0,0" />
+                                <Label Content="Tamam" Foreground="White" Width="100" Height="30" FontSize="15" Margin="35,0,0,0" />
+                            </Grid>
+                        </Border>
+                    </ContentControl>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="myBorder" Value="orange"/>
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
 
 
 

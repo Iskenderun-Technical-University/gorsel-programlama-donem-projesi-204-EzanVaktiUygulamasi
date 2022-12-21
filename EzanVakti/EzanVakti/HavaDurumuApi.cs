@@ -26,8 +26,6 @@ namespace EzanVakti
         public async Task<Weather> WeatherApi()
         {
             var WeatherForecastApi = PlaceUri(city);
-            /*var httpService = new HttpClientService();
-            var result = await httpService.GetObjectAsync<Weather>(WeatherForecastApi);*/
             var httpService = new CLientModel();
             var result = await httpService.ProcessApi<Weather>(WeatherForecastApi);
 

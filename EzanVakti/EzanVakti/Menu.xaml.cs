@@ -26,11 +26,25 @@ namespace EzanVakti
 
         private void Menubutton_Click(object sender, RoutedEventArgs e)
         {
-
+            Window1 window1 = new Window1();
+            window1.Show();
+            this.Close();
         }
         private void Menubutton_MouseEnter(object sender, MouseEventArgs e)
         {
            // locationSolid.Opacity = 0.5;
+        }
+
+        private void SehirDegistir_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main=new MainWindow();
+            main.Show();
+            this.Close();
+        }
+
+        private void UygulamayıKapat_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

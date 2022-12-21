@@ -14,10 +14,12 @@
     <None Remove="aksamWhite.png" />
     <None Remove="AllahuEkberBildirimSesi.mp3" />
     <None Remove="AllahuEkberBildirimSesi1.wav" />
-    <None Remove="Assets\AllahuEkberBildirimSesi.mp3" />
+    <None Remove="backgroundColor.jpg" />
+    <None Remove="CikisYap.png" />
     <None Remove="gunesBeyaz.png" />
     <None Remove="gunesImg.jpg" />
     <None Remove="gunesturuncu.png" />
+    <None Remove="icons8-location-50.png" />
     <None Remove="icons8-location-update-50.png" />
     <None Remove="icons8-menu-rounded-50.png" />
     <None Remove="ikindiImg.jpg" />
@@ -27,9 +29,11 @@
     <None Remove="imsakOrange.png" />
     <None Remove="imsakWhite.png" />
     <None Remove="menuIcon.png" />
+    <None Remove="no-wifi.png" />
     <None Remove="ogleImg.jpg" />
     <None Remove="ogleOrange3.png" />
     <None Remove="ogleWhite.png" />
+    <None Remove="oncekiSayfa.png" />
     <None Remove="yatsiImg.jpg" />
     <None Remove="yatsiOrange.png" />
     <None Remove="yatsiWhite.png" />
@@ -49,12 +53,12 @@
     <Resource Include="aksamWhite.png" />
     <Content Include="AllahuEkberBildirimSesi.mp3" />
     <Resource Include="AllahuEkberBildirimSesi1.wav" />
-    <Resource Include="Assets\AllahuEkberBildirimSesi.mp3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="backgroundColor.jpg" />
+    <Resource Include="CikisYap.png" />
     <Resource Include="gunesBeyaz.png" />
     <Resource Include="gunesImg.jpg" />
     <Resource Include="gunesturuncu.png" />
+    <Resource Include="icons8-location-50.png" />
     <Resource Include="icons8-location-update-50.png" />
     <Resource Include="icons8-menu-rounded-50.png" />
     <Resource Include="ikindiImg.jpg" />
@@ -64,9 +68,11 @@
     <Resource Include="imsakOrange.png" />
     <Resource Include="imsakWhite.png" />
     <Resource Include="menuIcon.png" />
+    <Resource Include="no-wifi.png" />
     <Resource Include="ogleImg.jpg" />
     <Resource Include="ogleOrange3.png" />
     <Resource Include="ogleWhite.png" />
+    <Resource Include="oncekiSayfa.png" />
     <Resource Include="yatsiImg.jpg" />
     <Resource Include="yatsiOrange.png" />
     <Resource Include="yatsiWhite.png" />

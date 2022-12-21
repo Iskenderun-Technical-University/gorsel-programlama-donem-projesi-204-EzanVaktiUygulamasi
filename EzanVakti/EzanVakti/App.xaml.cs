@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace EzanVakti
 {
@@ -31,19 +34,25 @@ namespace EzanVakti
                     namaz.City = namaz.CurrentCity;
                     namaz.Year = date.Year;
                     namaz.Month = date.Month;
-                    await namaz.EzanFileInput();
-                    //namaz.MevcutDosya = true;
-                   /* while(true)
-                    {    NamazVaktiApi ezancheck=new NamazVaktiApi();
-                        ezancheck.EzanFileCheck();
-                        if (date.Year == ezancheck.CurrentYear && date.Month == ezancheck.CurrentMonth)
-                        {
-                            break;
+                    try
+                    {
+                        await namaz.EzanFileInput();
 
-                        }
-                    }*/
-                    Window1 window2 = new Window1();
-                    window2.Show();
+                        Window1 window2 = new Window1();
+                        window2.Show();
+                    }
+                    catch (HttpRequestException)
+                    {
+                        MainWindow mainWindow = (Application.Current.MainWindow as MainWindow);
+                        mainWindow.Show();
+                        mainWindow.viewboxResim.Stretch = Stretch.None;
+                        mainWindow.arkaplanresmi.Source = new BitmapImage(new Uri(@"/no-wifi.png", UriKind.RelativeOrAbsolute));
+                        mainWindow.baglantiyoklabel.Visibility = Visibility.Visible;
+                        mainWindow.Kapat.Visibility = Visibility.Visible;
+                        mainWindow.sehirseclabel.Visibility = Visibility.Hidden;
+                        mainWindow.sehir.Visibility = Visibility.Hidden;
+                        mainWindow.SehirSec.Visibility = Visibility.Hidden;
+                    }
                 }
             }
             else if(namaz.MevcutDosya==true)

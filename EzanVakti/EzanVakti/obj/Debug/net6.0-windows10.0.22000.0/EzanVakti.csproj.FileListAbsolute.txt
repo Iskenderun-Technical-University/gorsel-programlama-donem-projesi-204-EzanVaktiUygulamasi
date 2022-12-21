@@ -113,12 +113,14 @@ C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\bin\Debug\net6.0-wi
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\bin\Debug\net6.0-windows10.0.22000.0\WinRT.Runtime.dll
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti.csproj.AssemblyReference.cache
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\MainWindow.g.cs
+C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\Menu.g.cs
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\Window1.g.cs
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\App.g.cs
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti_Content.g.cs
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti_MarkupCompile.cache
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti_MarkupCompile.lref
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\MainWindow.baml
+C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\Menu.baml
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\Window1.baml
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti.g.resources
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti.Properties.Resources.resources
@@ -131,5 +133,3 @@ C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-wi
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti.pdb
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\EzanVakti.genruntimeconfig.cache
 C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\ref\EzanVakti.dll
-C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\Menu.g.cs
-C:\Users\manas\Desktop\ezanvakti github1\EzanVakti\EzanVakti\obj\Debug\net6.0-windows10.0.22000.0\Menu.baml
